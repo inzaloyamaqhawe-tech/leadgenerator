@@ -1,0 +1,27 @@
+Upload the CONTENTS of deploy-leadgenerator into Xneelo /leadgenerator.
+Keep the paths below exactly as shown. Do not create a second leadgenerator folder.
+
+.htaccess
+_shell.html
+api/.htaccess
+api/ai-draft.php
+api/bootstrap.php
+api/config.example.php
+api/config.php
+api/prospector.php
+assets/Wordmark-mQrMfA_T.js
+assets/_authenticated-BEZvscuC.js
+assets/admin-CckLADp7.js
+assets/auth-QD0vOy8h.js
+assets/button-FL5LjVsR.js
+assets/dist-Bu0oO0tG.js
+assets/index-BnjpRVsf.js
+assets/label-C-2_Oshf.js
+assets/route-D4OtxCP_.js
+assets/select-vOdImUl8.js
+assets/styles-C7LgimaT.css
+assets/useAuth-CYss7TqV.js
+bolide-logo.jpg
+favicon.ico
+faviconbolide.png
+robots.txt
