@@ -1,11 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { prospectorApi } from "@/lib/prospector-api";
 import { useAuth } from "@/hooks/useAuth";
-import { useProfiles } from "@/hooks/useProspectorData";
-import { TEAMS, formatDateZA } from "@/lib/prospector";
-import { Button } from "@/components/ui/button";
+import { formatDateZA } from "@/lib/prospector";
 import {
   Select,
   SelectContent,
@@ -29,19 +27,15 @@ export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminPage,
 });
 
-const ROLES = ["admin", "member", "viewer"] as const;
+const ROLES = ["admin", "member"] as const;
+type AdminUser = { id: string; name: string; email: string; role: "admin" | "rep"; created_at: string };
 
 function AdminPage() {
   const { isAdmin } = useAuth();
   const qc = useQueryClient();
-  const { data: profiles = [] } = useProfiles();
-  const { data: roles = [] } = useQuery({
-    queryKey: ["user_roles"],
-    queryFn: async () => {
-      const { data, error } = await supabase.from("user_roles").select("*");
-      if (error) throw error;
-      return (data ?? []) as { id: string; user_id: string; role: string }[];
-    },
+  const { data: users = [] } = useQuery({
+    queryKey: ["crm-admin-users"],
+    queryFn: async () => (await prospectorApi<{ users: AdminUser[] }>("users")).users,
   });
 
   if (!isAdmin) {
@@ -59,27 +53,11 @@ function AdminPage() {
   }
 
   async function setRole(userId: string, role: string) {
-    const { error: delErr } = await supabase.from("user_roles").delete().eq("user_id", userId);
-    if (delErr) {
-      toast.error(delErr.message);
-      return;
-    }
-    const { error } = await supabase
-      .from("user_roles")
-      .insert({ user_id: userId, role: role as "admin" | "member" | "viewer" });
-    if (error) toast.error(error.message);
-    else toast.success("Role updated");
-    await qc.invalidateQueries({ queryKey: ["user_roles"] });
-  }
-
-  async function updateProfile(userId: string, values: Record<string, unknown>) {
-    const { error } = await supabase
-      .from("profiles")
-      .update(values as never)
-      .eq("id", userId);
-    if (error) toast.error(error.message);
-    else toast.success("Saved");
-    await qc.invalidateQueries({ queryKey: ["profiles"] });
+    try {
+      await prospectorApi("updateUserRole", { userId, role: role === "admin" ? "admin" : "rep" });
+      toast.success("Role updated");
+      await qc.invalidateQueries({ queryKey: ["crm-admin-users"] });
+    } catch (error) { toast.error(error instanceof Error ? error.message : "Unable to update role"); }
   }
 
   return (
@@ -102,33 +80,18 @@ function AdminPage() {
               <th className="px-3 py-3">Email</th>
               <th className="px-3 py-3">Team</th>
               <th className="px-3 py-3">Role</th>
-              <th className="px-3 py-3">Active</th>
               <th className="px-3 py-3">Joined</th>
             </tr>
           </thead>
           <tbody>
-            {profiles.map((p) => {
-              const role = roles.find((r) => r.user_id === p.id)?.role ?? "member";
+            {users.map((p) => {
+              const role = p.role === "admin" ? "admin" : "member";
               return (
                 <tr key={p.id} className="border-b border-line/70 last:border-0">
-                  <td className="px-3 py-3">{p.full_name}</td>
+                  <td className="px-3 py-3">{p.name}</td>
                   <td className="px-3 py-3 text-xs">{p.email}</td>
                   <td className="px-3 py-3">
-                    <Select
-                      value={p.team}
-                      onValueChange={(v) => void updateProfile(p.id, { team: v })}
-                    >
-                      <SelectTrigger className="w-44">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {TEAMS.map((t) => (
-                          <SelectItem key={t} value={t}>
-                            {t}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    Bolide
                   </td>
                   <td className="px-3 py-3">
                     <Select value={role} onValueChange={(v) => void setRole(p.id, v)}>
@@ -143,16 +106,6 @@ function AdminPage() {
                         ))}
                       </SelectContent>
                     </Select>
-                  </td>
-                  <td className="px-3 py-3">
-                    <Button
-                      size="sm"
-                      variant={p.is_active ? "outline" : "default"}
-                      className="rounded-full"
-                      onClick={() => void updateProfile(p.id, { is_active: !p.is_active })}
-                    >
-                      {p.is_active ? "Deactivate" : "Reactivate"}
-                    </Button>
                   </td>
                   <td className="px-3 py-3 text-xs text-muted-foreground">
                     {formatDateZA(p.created_at)}
