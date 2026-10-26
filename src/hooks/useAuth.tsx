@@ -1,22 +1,13 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import type { Session, User } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
 
-export type Profile = {
-  id: string;
-  full_name: string;
-  email: string;
-  team: string;
-  is_active: boolean;
-  created_at: string;
-};
-
+export type Profile = { id: string; full_name: string; email: string; team: string; is_active: boolean; created_at: string };
 export type AppRole = "admin" | "member" | "viewer";
+export type AuthUser = { id: string; name: string; email: string; role: "admin" | "rep" };
 
 type AuthState = {
   loading: boolean;
-  session: Session | null;
-  user: User | null;
+  session: { user: AuthUser } | null;
+  user: AuthUser | null;
   profile: Profile | null;
   role: AppRole | null;
   isAdmin: boolean;
@@ -26,80 +17,59 @@ type AuthState = {
 };
 
 const AuthContext = createContext<AuthState | null>(null);
+export const crmAuthUrl = () => `${window.location.origin}/crm/api/auth.php`;
+
+async function authRequest(values?: Record<string, unknown>) {
+  const response = await fetch(crmAuthUrl(), {
+    method: values ? "POST" : "GET",
+    credentials: "same-origin",
+    headers: values ? { "Content-Type": "application/json" } : undefined,
+    body: values ? JSON.stringify(values) : undefined,
+  });
+  const payload = (await response.json().catch(() => ({}))) as { ok?: boolean; user?: AuthUser | null; error?: string };
+  if (!response.ok || payload.ok === false) throw new Error(payload.error || "Unable to authenticate.");
+  return payload.user ?? null;
+}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [role, setRole] = useState<AppRole | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
-
-  const load = async (uid: string | undefined) => {
-    if (!uid) {
-      setProfile(null);
-      setRole(null);
-      return;
-    }
-    const [{ data: p }, { data: r }] = await Promise.all([
-      supabase.from("profiles").select("*").eq("id", uid).maybeSingle(),
-      supabase.from("user_roles").select("role").eq("user_id", uid),
-    ]);
-    setProfile((p as Profile) ?? null);
-    const roles = (r ?? []).map((x) => x.role as AppRole);
-    setRole(
-      roles.includes("admin")
-        ? "admin"
-        : roles.includes("member")
-          ? "member"
-          : roles.includes("viewer")
-            ? "viewer"
-            : null,
-    );
+  const refresh = async () => {
+    try { setUser(await authRequest()); } catch { setUser(null); }
   };
 
-  useEffect(() => {
-    let active = true;
-    const { data: sub } = supabase.auth.onAuthStateChange((event, s) => {
-      if (!active) return;
-      setSession(s);
-      if (event === "SIGNED_OUT") {
-        setProfile(null);
-        setRole(null);
-        return;
-      }
-      setTimeout(() => {
-        void load(s?.user?.id);
-      }, 0);
-    });
+  useEffect(() => { void refresh().finally(() => setLoading(false)); }, []);
 
-    void (async () => {
-      const { data } = await supabase.auth.getSession();
-      if (!active) return;
-      setSession(data.session);
-      await load(data.session?.user?.id);
-      setLoading(false);
-    })();
+  const profile: Profile | null = user ? { id: user.id, full_name: user.name, email: user.email, team: "Bolide", is_active: true, created_at: "" } : null;
+  const role: AppRole | null = user ? (user.role === "admin" ? "admin" : "member") : null;
 
-    return () => {
-      active = false;
-      sub.subscription.unsubscribe();
-    };
-  }, []);
-
-  const value: AuthState = {
-    loading,
-    session,
-    user: session?.user ?? null,
-    profile,
-    role,
-    isAdmin: role === "admin" && !!profile?.is_active,
-    canEdit: (role === "admin" || role === "member") && !!profile?.is_active,
-    refresh: () => load(session?.user?.id),
-    signOut: async () => {
-      await supabase.auth.signOut();
-    },
-  };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{
+      loading,
+      session: user ? { user } : null,
+      user,
+      profile,
+      role,
+      isAdmin: role === "admin",
+      canEdit: role === "admin" || role === "member",
+      refresh,
+      signOut: async () => {
+        const sessionResponse = await fetch(crmAuthUrl(), { credentials: "same-origin" });
+        const sessionPayload = (await sessionResponse.json()) as { csrf?: string };
+        const logoutResponse = await fetch(crmAuthUrl(), {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json", "X-CSRF-Token": sessionPayload.csrf ?? "" },
+          body: JSON.stringify({ action: "logout" }),
+        });
+        if (!logoutResponse.ok) throw new Error("Unable to sign out.");
+        setUser(null);
+        window.location.assign(`${import.meta.env.BASE_URL}auth`);
+      },
+    }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export function useAuth() {

@@ -11,11 +11,11 @@ function tp_http(string $url,string $method,array $headers=[],?array $body=null)
 }
 function tp_token(): string {$header=(string)($_SERVER['HTTP_AUTHORIZATION']??'');if(!preg_match('/^Bearer\s+(.+)$/i',$header,$m))tp_json(['ok'=>false,'error'=>'Please sign in again.'],401);return $m[1];}
 function tp_auth(): array {
-    $token=tp_token();$cfg=tp_config();$headers=['apikey: '.$cfg['supabase_publishable_key'],'Authorization: Bearer '.$token];
-    $user=tp_http(rtrim($cfg['supabase_url'],'/').'/auth/v1/user','GET',$headers);if($user['status']!==200||empty($user['json']['id']))tp_json(['ok'=>false,'error'=>'Please sign in again.'],401);$id=$user['json']['id'];
-    $profile=tp_http(rtrim($cfg['supabase_url'],'/').'/rest/v1/profiles?id=eq.'.rawurlencode($id).'&select=id,full_name,email,is_active','GET',$headers);$row=$profile['json'][0]??null;if(!$row||empty($row['is_active']))tp_json(['ok'=>false,'error'=>'This account is inactive.'],403);
-    $roles=tp_http(rtrim($cfg['supabase_url'],'/').'/rest/v1/user_roles?user_id=eq.'.rawurlencode($id).'&select=role','GET',$headers);$names=array_column($roles['json'],'role');
-    return ['token'=>$token,'headers'=>$headers,'actor'=>['id'=>$id,'email'=>$row['email']??($user['json']['email']??''),'name'=>$row['full_name']?:($row['email']??'Team member'),'active'=>true,'canEdit'=>in_array('admin',$names,true)||in_array('member',$names,true)]];
+    $cfg=tp_config();$cookie=(string)($_SERVER['HTTP_COOKIE']??'');
+    $auth=tp_http($cfg['crm_auth_url']??'https://bolide.co.za/crm/api/auth.php','GET',$cookie!==''?['Cookie: '.$cookie]:[]);
+    $user=$auth['json']['user']??null;
+    if($auth['status']!==200||!is_array($user)||empty($user['id']))tp_json(['ok'=>false,'error'=>'Please sign in again.'],401);
+    return ['actor'=>['id'=>(string)$user['id'],'email'=>(string)($user['email']??''),'name'=>(string)($user['name']??$user['email']??'Team member'),'active'=>true,'canEdit'=>in_array(($user['role']??''),['admin','rep'],true)]];
 }
 function tp_crm(array $body): array {$cfg=tp_config();return tp_http($cfg['crm_api_url'],'POST',['Content-Type: application/json','X-Bolide-Api-Secret: '.$cfg['crm_api_secret']],$body);}
 function tp_supabase_rows(string $table,array $headers): array {

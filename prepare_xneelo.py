@@ -57,12 +57,16 @@ if destination_assets.exists():
         if old_asset.is_file() and old_asset.name not in source_assets:
             old_asset.unlink()
 shutil.copytree(BUILD, DEST, dirs_exist_ok=True)
+obsolete_logo = DEST / "bolide-logo.jpg"
+if obsolete_logo.exists():
+    obsolete_logo.unlink()
 
 config = """<?php
 return [
     'supabase_url' => {supabase_url},
     'supabase_publishable_key' => {supabase_key},
     'crm_api_url' => 'https://bolide.co.za/crm/api/township-prospects.php',
+    'crm_auth_url' => 'https://bolide.co.za/crm/api/auth.php',
     'crm_api_secret' => {crm_secret},
     'lovable_api_key' => {lovable_key},
 ];

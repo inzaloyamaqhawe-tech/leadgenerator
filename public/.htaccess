@@ -1,4 +1,5 @@
 Options -Indexes
+DirectoryIndex _shell.html
 RewriteEngine On
 
 # Keep the PHP integration and generated assets on their real files.

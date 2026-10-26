@@ -1,5 +1,3 @@
-import { supabase } from "@/integrations/supabase/client";
-
 export class ProspectorApiError extends Error {
   constructor(
     message: string,
@@ -19,12 +17,10 @@ export async function prospectorApi<T = Record<string, unknown>>(
   action: string,
   values: Record<string, unknown> = {},
 ): Promise<T> {
-  const { data } = await supabase.auth.getSession();
-  const token = data.session?.access_token;
-  if (!token) throw new ProspectorApiError("Please sign in again.", 401, {});
   const response = await fetch(appApiUrl("prospector.php"), {
     method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ action, ...values }),
   });
   const payload = (await response.json().catch(() => ({}))) as Record<string, unknown>;

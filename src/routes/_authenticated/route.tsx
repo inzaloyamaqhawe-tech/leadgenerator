@@ -1,5 +1,4 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/prospector/Wordmark";
@@ -7,9 +6,11 @@ import { Wordmark } from "@/components/prospector/Wordmark";
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
   beforeLoad: async () => {
-    const { data, error } = await supabase.auth.getUser();
-    if (error || !data.user) throw redirect({ to: "/auth" });
-    return { user: data.user };
+    const response = await fetch(`${window.location.origin}/crm/api/auth.php`, { credentials: "same-origin" });
+    if (!response.ok) throw redirect({ to: "/auth" });
+    const payload = (await response.json()) as { user?: unknown };
+    if (!payload.user) throw redirect({ to: "/auth" });
+    return { user: payload.user };
   },
   component: AuthenticatedLayout,
 });
