@@ -58,9 +58,8 @@ export function useProfiles() {
   return useQuery({
     queryKey: ["profiles"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("profiles").select("*").order("full_name");
-      if (error) throw error;
-      return (data ?? []) as ProfileRow[];
+      const owners = (await prospectorApi<{ owners: CrmOwner[] }>("owners")).owners;
+      return owners.map((owner) => ({ id: owner.id, full_name: owner.name, email: owner.email, team: "Bolide", is_active: true, created_at: "" })) as ProfileRow[];
     },
   });
 }
@@ -69,13 +68,7 @@ export function useUtilityRules() {
   return useQuery({
     queryKey: ["utility_rules"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("utility_rules")
-        .select("*")
-        .order("township")
-        .order("suburb_or_zone");
-      if (error) throw error;
-      return (data ?? []) as UtilityRule[];
+      return (await prospectorApi<{ rules: UtilityRule[] }>("utilityData")).rules;
     },
   });
 }
@@ -84,9 +77,7 @@ export function useUtilityContext() {
   return useQuery({
     queryKey: ["utility_context"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("utility_context").select("*").order("utility");
-      if (error) throw error;
-      return (data ?? []) as UtilityContext[];
+      return (await prospectorApi<{ context: UtilityContext[] }>("utilityData")).context;
     },
   });
 }

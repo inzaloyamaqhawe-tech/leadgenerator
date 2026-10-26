@@ -1,0 +1,486 @@
+{
+  "rules": [
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Eskom total shutdown notice for Ga-Rankuwa, Mabopane, Motlhotlung, Winterveld (15 Mar 2026); many units on Eskom load reduction. Ga-Rankuwa Industrial area supplier not separately confirmed - verify for C&I.",
+      "source_url": "https://x.com/Eskom_SA/status/2031329459836469641",
+      "suburb_or_zone": "*",
+      "township": "Ga-Rankuwa",
+      "water_provider": "City of Tshwane Water & Sanitation; bulk from Rand Water (Ga-Rankuwa Industrial reservoir)",
+      "id": "tur-0e2a446faf5799f82b4c53ba"
+    },
+    {
+      "confidence": "low",
+      "electricity_provider": "Mixed — verify",
+      "note": "Water confirmed; electricity likely Eskom (inference from surrounding units) but may be Gauteng IDZ/Tshwane bulk - verify on bill.",
+      "source_url": "https://www.joburgetc.com/news/rand-water-shutdown-mabopane-ga-rankuwa/",
+      "suburb_or_zone": "Ga-Rankuwa Industrial (Ga-Rankuwa Industrial Park)",
+      "township": "Ga-Rankuwa",
+      "water_provider": "City of Tshwane Water & Sanitation (bulk Rand Water via Ga-Rankuwa Industrial reservoir)",
+      "id": "tur-3a6b980d7f568a4589d21785"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Named units on Eskom load reduction (Jan 2025). Units 1, 3, 10, 15, 21, 24 not named but presumed Eskom by rule of thumb.",
+      "source_url": "https://www.citizen.co.za/rekord/news-headlines/2025/01/07/eskom-implements-load-reduction-in-north-to-protect-infrastructure/",
+      "suburb_or_zone": "Units 2, 4, 5, 6, 7, 8, 9, 16, 17, 20, 23, 25; Part 4 SP and NU; Ga-Rankuwa View Ext 1",
+      "township": "Ga-Rankuwa",
+      "water_provider": "City of Tshwane Water & Sanitation (bulk Rand Water)",
+      "id": "tur-51b6a04354df5c4bc58b9a63"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Most of Khayelitsha is Eskom-supplied (Eskom 'Village 1' and 'Village 2'); City has been in talks to take over (IOL 2022) but no transfer confirmed. Eskom areas do NOT get the City's Steenbras load-shedding shield. Portions of Site B and Site C may be City-supplied (Eskom only lists 'portion of' them).",
+      "source_url": "https://iol.co.za/capetimes/news/2023-03-02-eskom-to-split-khayelitsha-load-shedding-blocks/",
+      "suburb_or_zone": "*",
+      "township": "Khayelitsha",
+      "water_provider": "City of Cape Town Water & Sanitation (WSA and provider; own bulk from Western Cape Water Supply System)",
+      "id": "tur-202b4314d234a5bc28636069"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Eskom load-shedding Block 4 (Mar 2023).",
+      "source_url": "https://iol.co.za/capetimes/news/2023-03-02-eskom-to-split-khayelitsha-load-shedding-blocks/",
+      "suburb_or_zone": "Makhaza / portions of Zwezwe / portion of Enkanini (Inkanini) / municipal resort / main sewerage plant",
+      "township": "Khayelitsha",
+      "water_provider": "City of Cape Town Water & Sanitation",
+      "id": "tur-b7406419799ed263d2a1ae11"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Eskom load-shedding Block 5 (Mar 2023). Khayelitsha CBD (Khayelitsha Mall area) is Eskom - relevant for retail C&I.",
+      "source_url": "https://iol.co.za/capetimes/news/2023-03-02-eskom-to-split-khayelitsha-load-shedding-blocks/",
+      "suburb_or_zone": "Sections A-L (Bongweni, Ikwezi Park, Khulani Park, Khanya Park, Tembani, Washington Square, Graceland, Ekuphumleni, Zolani Park) / Green Point / Harare / Kuyasa / Town Two / Litha Park / Ndlovini / Mandela Park / Makhaya / SST / Monwabisi Park / Khayelitsha CBD / Khayelitsha Hospital",
+      "township": "Khayelitsha",
+      "water_provider": "City of Cape Town Water & Sanitation",
+      "id": "tur-4ccb6b8bf0d302fda0fe096e"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "Mixed — verify",
+      "note": "Eskom lists only 'portion of Site B' and 'portion of Site C'; remainder presumably City of Cape Town (inference). Check City vs Eskom load-shedding area code on the customer's bill/token.",
+      "source_url": "https://iol.co.za/capetimes/news/2023-03-02-eskom-to-split-khayelitsha-load-shedding-blocks/",
+      "suburb_or_zone": "Site B / Site C (portions)",
+      "township": "Khayelitsha",
+      "water_provider": "City of Cape Town Water & Sanitation",
+      "id": "tur-fb3961522476eb0fba5aae07"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Former Bophuthatswana area; Eskom supplies retail (Eskom load reduction and planned maintenance notices Jan 2025, Mar 2026, Jun 2026). Tshwane handles water, roads, streetlights. Court ruling (Jun 2026, Mooikloof) affirms municipal reticulation rights for NEW developments - watch for future transfers, but no Mabopane transfer found.",
+      "source_url": "https://www.citizen.co.za/rekord/news-headlines/2025/01/07/eskom-implements-load-reduction-in-north-to-protect-infrastructure/",
+      "suburb_or_zone": "*",
+      "township": "Mabopane",
+      "water_provider": "City of Tshwane Water & Sanitation; bulk from Rand Water (Mabopane reservoir)",
+      "id": "tur-8018e66fecc18f9e6bcdad1a"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Named on Eskom load reduction (Jan 2025): 'Mabopane blocks B, C, D, U, X, S, M, EW and CV'; 'Mabopane U, R, Ext 18 Mabopane Part 19 SP'.",
+      "source_url": "https://www.citizen.co.za/rekord/news-headlines/2025/01/07/eskom-implements-load-reduction-in-north-to-protect-infrastructure/",
+      "suburb_or_zone": "Blocks B, C, D, U, X, S, M, EW, CV, R; Ext 18; Part 19 SP",
+      "township": "Mabopane",
+      "water_provider": "City of Tshwane Water & Sanitation (bulk Rand Water)",
+      "id": "tur-e137950b047908bfacc0518a"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Eskom load reduction lists 2025-2026; Eskom planned maintenance Ga-Rankuwa/Mabopane/Motlhotlung/Winterveld 15 Mar 2026.",
+      "source_url": "https://www.citizen.co.za/rekord/news-headlines/2025/01/07/eskom-implements-load-reduction-in-north-to-protect-infrastructure/",
+      "suburb_or_zone": "Winterveld (adjacent; wards 2, 6, 9, 11, 12, 13; Ext 3)",
+      "township": "Mabopane",
+      "water_provider": "City of Tshwane Water & Sanitation (bulk Rand Water)",
+      "id": "tur-72893ea089c796cd5a2abc57"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City of Cape Town",
+      "note": "Mitchells Plain listed as City of Cape Town load-shedding Block 4 (aggregator of City schedules). No source found naming any Eskom-supplied part of Mitchells Plain. Benefits from City's Steenbras protection against first load-shedding stages.",
+      "source_url": "https://www.ourpower.co.za/areas/city-of-cape-town/mitchells-plain",
+      "suburb_or_zone": "*",
+      "township": "Mitchells Plain",
+      "water_provider": "City of Cape Town Water & Sanitation",
+      "id": "tur-a24e197a84b2eeb96a272a07"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City of Cape Town",
+      "note": "All listed under City of Cape Town Block 4. Town Centre (Promenade/Liberty) not separately listed - presumed City.",
+      "source_url": "https://www.ourpower.co.za/areas/city-of-cape-town/mitchells-plain",
+      "suburb_or_zone": "Beacon Valley / Colorado Park / Eastridge / Lentegeur / Lost City / Montclair / Montrose Park / Morgans Village / Portlands / Rocklands / Rondevlei / Tafelsig / Weltevreden Valley / Westgate / Westridge / Woodlands",
+      "township": "Mitchells Plain",
+      "water_provider": "City of Cape Town Water & Sanitation",
+      "id": "tur-5996f39da4ab7ffc79627d64"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City of Tshwane",
+      "note": "Core Soshanguve blocks are Tshwane-supplied (Soshanguve 132/11kV substation, Kwagga infeed). Some fringe extensions (Soshanguve Ext 1, Soshanguve South) are Eskom. Northern double-letter blocks unconfirmed. Tshwane itself runs 'load reduction' in overloaded Soshanguve blocks.",
+      "source_url": "https://www.iol.co.za/pretoria-news/news/residents-angry-over-load-reduction-in-soshanguve-9fe0a79e-bfc1-4119-9c78-79062647906d",
+      "suburb_or_zone": "*",
+      "township": "Soshanguve",
+      "water_provider": "City of Tshwane Water & Sanitation (WSA); bulk mainly from Rand Water (e.g. Hartebeeshoek reservoir)",
+      "id": "tur-f688b77023e540074e101b00"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "Mixed — verify",
+      "note": "Water row only; electricity supplier not established.",
+      "source_url": "https://www.joburgetc.com/news/rand-water-shutdown-mabopane-ga-rankuwa/",
+      "suburb_or_zone": "Block NW",
+      "township": "Soshanguve",
+      "water_provider": "City of Tshwane Water & Sanitation; bulk from Rand Water via Mabopane/Ga-Rankuwa Industrial reservoirs",
+      "id": "tur-eeb9d8fe28adaa5564ced0d2"
+    },
+    {
+      "confidence": "low",
+      "electricity_provider": "Mixed — verify",
+      "note": "Named in an Eskom 11-hour planned outage (Nov 2023) for Apollo-Dinaledi 400kV line work, but that list also includes Tshwane-supplied blocks (S, R, T, V, X, W), so it reflects Eskom bulk infeed, not retail supplier. Rule of thumb: Tshwane unless bill says Eskom. Water detail: IOL Jul 2025.",
+      "source_url": "https://www.iol.co.za/pretoria-news/news/eskoms-11-hour-power-outage-planned-for-soshanguve-62111d88-eae9-4e44-b070-4ad8706b6c0a",
+      "suburb_or_zone": "Blocks L, M (and Exts), DD, BB, LL, JJ, NN, FF, HH, GG, IA, PP, K, H, F, CC, G, MM",
+      "township": "Soshanguve",
+      "water_provider": "City of Tshwane Water & Sanitation (Blocks L, VV, WW, XX, UU, KK, GG, BB, DD fed via Rand Water Hartebeeshoek reservoir)",
+      "id": "tur-8b8dee8ea8f690b939ff21a1"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "City of Tshwane",
+      "note": "Tshwane outage Oct 2024 via Kwagga infeed / Block X substation vandalism.",
+      "source_url": "https://www.timeslive.co.za/news/south-africa/2024-10-11-tshwane-power-restored-except-for-soshanguve/",
+      "suburb_or_zone": "Blocks P, X, Y",
+      "township": "Soshanguve",
+      "water_provider": "City of Tshwane Water & Sanitation",
+      "id": "tur-43af0678e48f69f4dc1df7df"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "City of Tshwane",
+      "note": "Tshwane-imposed load reduction on areas 'supplied by Soshanguve 132/11kV substation' (June 2024).",
+      "source_url": "https://www.iol.co.za/pretoria-news/news/residents-angry-over-load-reduction-in-soshanguve-9fe0a79e-bfc1-4119-9c78-79062647906d",
+      "suburb_or_zone": "Blocks V, T, W, KK, SS, X, S, R, X-Buffer A and B",
+      "township": "Soshanguve",
+      "water_provider": "City of Tshwane Water & Sanitation",
+      "id": "tur-e95c7f6587db80d2309200c8"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "Eskom",
+      "note": "Named in Eskom north-Tshwane load reduction list (Jan 2025) alongside Hebron.",
+      "source_url": "https://www.citizen.co.za/rekord/news-headlines/2025/01/07/eskom-implements-load-reduction-in-north-to-protect-infrastructure/",
+      "suburb_or_zone": "Soshanguve Ext 1",
+      "township": "Soshanguve",
+      "water_provider": "City of Tshwane Water & Sanitation",
+      "id": "tur-91af3ec5245227c68d6dc077"
+    },
+    {
+      "confidence": "low",
+      "electricity_provider": "Eskom",
+      "note": "Aggregator lists Soshanguve South on an Eskom schedule; not confirmed by Eskom/Tshwane. Verify.",
+      "source_url": "https://www.ourpower.co.za/areas/tshwane/soshanguve-south?providedBy=eskom",
+      "suburb_or_zone": "Soshanguve South (extensions)",
+      "township": "Soshanguve",
+      "water_provider": "City of Tshwane Water & Sanitation",
+      "id": "tur-bfcde4b10b9a8b519f61c6fc"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "Eskom",
+      "note": "Most of historic Soweto is still supplied directly by Eskom (Eskom load-reduction lists in 2025-2026 cover Chiawelo, Protea, Naledi, Diepkloof, Orlando East, Dobsonville, Jabulani, Emdeni, Zola, Dube, Mofolo, Meadowlands etc.). The 2021-22 announced City Power takeover of Soweto has not been completed (joburgetc.com 2025). City Power supplies a south-eastern fringe (Pimville, Kliptown, Klipspruit West, Nancefield, Devland, Eldorado Park) plus Noordgesig, Riverlea, Orlando Ekhaya and Doornkop. Default = Eskom but verify per site.",
+      "source_url": "https://www.citizen.co.za/news/south-africa/eskom-load-reduction-still-hitting-gauteng-here-is-every-area-affected-this-week/",
+      "suburb_or_zone": "*",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water (City of Johannesburg WSA; bulk from Rand Water)",
+      "id": "tur-92e6a04165d0a7f737a7f033"
+    },
+    {
+      "confidence": "low",
+      "electricity_provider": "Mixed — verify",
+      "note": "Not found on either the City Power block list or 2025-26 Eskom lists consulted. Older areas (Senaoane, Phiri, Zondi, Mndeni) likely Eskom by rule of thumb; newer greenfield developments (Lufhereng, Braamfischerville, Tshepisong) could be City Power. Unconfirmed.",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Braamfischerville / Lufhereng / Tshepisong / Snake Park / Power Park / Senaoane / Phiri / Zondi / Mndeni",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-f1a5ef9dd500c0ca52020b34"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City Power",
+      "note": "City Power load-shedding Block 7. Devland industrial is a strong C&I target on municipal supply.",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Devland (incl. industrial)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-4f34c7210590ef5b552e884f"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Diepkloof on Eskom load reduction (June 2026); TimesLIVE Aug 2025 'Eskom blamed as Diepkloof endures daily 5pm-10pm blackouts'. Police station area and Chris Hani Baragwanath Hospital excluded from those outages.",
+      "source_url": "https://www.joburgetc.com/news/gauteng-eskom-load-reduction-areas-affected/",
+      "suburb_or_zone": "Diepkloof (zones 1-6)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-050fa791d80f2f6af7dabf23"
+    },
+    {
+      "confidence": "low",
+      "electricity_provider": "Mixed — verify",
+      "note": "No source found separating Diepkloof Ext from Diepkloof. Inference: likely Eskom like rest of Diepkloof, but not confirmed. City Power supply NOT supported by any source found.",
+      "source_url": "https://www.timeslive.co.za/news/south-africa/2025-08-01-eskom-blamed-as-diepkloof-endures-daily-5pm-to-10pm-blackouts/",
+      "suburb_or_zone": "Diepkloof Extension (Diepkloof Ext / Zone 6 'Diepkloof Extension')",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-84360e4577041ad998ec0691"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Eskom load-reduction Block C (18 June 2026). Jabulani Mall/Maponya Mall-area landlords may take bulk supply - verify.",
+      "source_url": "https://www.citizen.co.za/news/south-africa/eskom-load-reduction-still-hitting-gauteng-here-is-every-area-affected-this-week/",
+      "suburb_or_zone": "Dobsonville (incl. Ext 5, 7) / Jabulani / Emdeni (incl. Ext 2) / Zola",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-773e198f984c966b59443d05"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City Power",
+      "note": "Listed in City Power Blocks 7/17. Neighbouring Braamfischerville, Lufhereng, Tshepisong, Snake Park: supplier not confirmed by any source found - verify.",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Doornkop",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-ecfcf14018f920bd6bde3470"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Eskom load-reduction Block B (19 and 22 June 2026).",
+      "source_url": "https://www.joburgetc.com/news/gauteng-eskom-load-reduction-areas-affected/",
+      "suburb_or_zone": "Dube (incl. Ext 1) / Mofolo (North, South, Central) / Meadowlands (Zones 1-10)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-0fc7fd5b7213dc2fec2fef45"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City Power",
+      "note": "City Power Block 7; the Eldorado Park substation feeds Kliptown/Pimville (GroundUp 2022).",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Eldorado Park / Eldorado Park Ext (adjacent to Soweto)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-f49c58017b12d124aa1d3d24"
+    },
+    {
+      "confidence": "low",
+      "electricity_provider": "Eskom",
+      "note": "Appears on an aggregator's Eskom Soweto load-reduction list only; not confirmed by Eskom directly. Verify.",
+      "source_url": "https://www.ourpower.co.za/load-reduction/gauteng/soweto",
+      "suburb_or_zone": "Klipspruit (excl. Klipspruit West)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-3f43695f2e77ad8b14358124"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City Power",
+      "note": "Listed in City Power load-shedding Block 7. Note: 'Klipspruit' (without West) appears on Eskom load-reduction lists - different area, treat as Eskom.",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Klipspruit West",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-85778d6d48fa9a108926589e"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "City Power",
+      "note": "City Power outage/protests at Kliptown & Pimville (2022); Kliptown and Kliptown RDP also appear in City Power load-shedding blocks 7/17 (ourpower.co.za/areas/jhb-city-power/blocks).",
+      "source_url": "https://www.dailymaverick.co.za/article/2022-04-26-soweto-residents-block-roads-burn-tires-after-13-days-without-electricity/",
+      "suburb_or_zone": "Kliptown (incl. Kliptown RDP, Walter Sisulu Square)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-605e1302a50bf1e589401985"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "Eskom",
+      "note": "From aggregator Eskom Soweto load-reduction list (EskomSePush-type data), not an Eskom press release. Consistent with Eskom being default for old Soweto.",
+      "source_url": "https://www.ourpower.co.za/load-reduction/gauteng/soweto",
+      "suburb_or_zone": "Moroka / Dlamini / Molapo / Moletsane / Tladi / Jabavu (Ext 1-3) / Kudube / Langaville",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-b26de07851b60f5644f80a58"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City Power",
+      "note": "City Power load-shedding Block 7.",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Nancefield / Nancefield Ext",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-d766234595a0e71362693b1c"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City Power",
+      "note": "City Power load-shedding Block 14.",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Noordgesig",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-f138d3f28df7f3b5c585e5d8"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Eskom load-reduction Block F (17 June 2026).",
+      "source_url": "https://www.joburgetc.com/news/gauteng-eskom-load-reduction-areas-affected/",
+      "suburb_or_zone": "Orlando East / Soweto Nomzamo",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-bf99fd8ed518af55187acd1f"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City Power",
+      "note": "Newer development listed in City Power Blocks 7/17. Do NOT extend to Orlando East/West.",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Orlando Ekhaya",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-9577dcef0f9ab1d6c37019d2"
+    },
+    {
+      "confidence": "low",
+      "electricity_provider": "Eskom",
+      "note": "Inference from Orlando East and surrounding Eskom areas; no 2025-26 source explicitly naming Orlando West's supplier. Verify (Vilakazi St tourism strip is a good C&I prospect).",
+      "source_url": "https://www.citizen.co.za/soweto-urban/36558/planned-power-outages-orlando-west/",
+      "suburb_or_zone": "Orlando West",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-22f4612e194acb668372b5ec"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "City Power",
+      "note": "City Power confirmed outage to Pimville Zone 9 (Jan 2026); City Power X notice (May 2025) re Lenasia/Soweto substation also names Pimville Zone 9. Other Pimville zones assumed City Power but not individually confirmed.",
+      "source_url": "https://www.citizen.co.za/soweto-urban/news-headlines/local-municipal-news/2026/01/30/power-outage-in-pimville-linked-to-faulty-transformer/",
+      "suburb_or_zone": "Pimville (incl. Zone 9)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-dc653d6f66172d89f8a533c0"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Eskom (Jul 2025): fault at Glen substation 'affecting customers in the entire Protea Glen'. Protea Glen Mall area likely same - verify for mall tenants (may have bulk/landlord supply).",
+      "source_url": "https://x.com/Eskom_SA/status/1950595675495837725",
+      "suburb_or_zone": "Protea Glen (all extensions)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-f18ca661683958b395aa2862"
+    },
+    {
+      "confidence": "high",
+      "electricity_provider": "Eskom",
+      "note": "Named on Eskom Gauteng load-reduction schedule (June 2026). Protea City from aggregator list only (ourpower.co.za) - medium for that one.",
+      "source_url": "https://www.citizen.co.za/news/south-africa/eskom-load-reduction-still-hitting-gauteng-here-is-every-area-affected-this-week/",
+      "suburb_or_zone": "Protea North / Protea South / Protea City / Mapetla / Chiawelo / Nooitgedacht / Naledi",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-ef4b1604fe32d387fd18ee3d"
+    },
+    {
+      "confidence": "medium",
+      "electricity_provider": "City Power",
+      "note": "City Power load-shedding Block 12.",
+      "source_url": "https://www.ourpower.co.za/areas/jhb-city-power/blocks",
+      "suburb_or_zone": "Riverlea (adjacent to Soweto)",
+      "township": "Soweto",
+      "water_provider": "Johannesburg Water",
+      "id": "tur-75450b6d6d2a8ef3b0769761"
+    }
+  ],
+  "contexts": [
+    {
+      "id": "tuc-a2c6ce881557e7861a0ee4e1",
+      "utility": "City of Cape Town Electricity",
+      "service_area": "Mitchells Plain; parts of Khayelitsha Site B/C",
+      "tariff_increase": "2026/27 (from 1 Jul 2026): 6.67% overall; commercial/industrial large users: LV 7.75-9.01%, MV 8.27-9.62%, HV 8.43-9.17% depending on component; residential energy charge 8.55%.",
+      "reliability": "Best of the three metros: Steenbras 180MW pumped storage protects City customers from up to ~2 stages of Eskom load-shedding (IPP programme aims for 4). Eskom-supplied areas (Khayelitsha) do not benefit.",
+      "sseg_rules": "Must apply for City authorisation before installation (online). Bi-directional meter at customer's cost. Cash for Power: commercial payouts monthly once credit > R5,000; commercial feed-in 82.06c/kWh + 25c/kWh incentive (incentive retained for 2026/27). Wheeling permitted within City network with deficit energy tariff; wheeling from City-network generators to customers outside network not permitted. Unauthorised systems: R6,425.90 disconnection/reconnection fee reported.",
+      "verify_how": "City bill or prepaid token (City of Cape Town vending); City/Eskom supply-area query: power@capetown.gov.za or SMS 31220; City load-shedding area lookup (City vs Eskom schedule).",
+      "source_url": "https://resource.capetown.gov.za/documentcentre/Documents/Financial%20documents/Budget-2026-27_Ann04.pdf"
+    },
+    {
+      "id": "tuc-247cdfd8dd4d86b33ea8d50d",
+      "utility": "City of Cape Town Water & Sanitation",
+      "service_area": "Khayelitsha, Mitchells Plain",
+      "tariff_increase": "2026/27: water +3.9% average.",
+      "reliability": "Relatively reliable; City is WSA and provider with own bulk (WCWSS dams).",
+      "sseg_rules": "n/a (water).",
+      "verify_how": "City of Cape Town municipal account.",
+      "source_url": "https://resource.capetown.gov.za/documentcentre/Documents/Financial%20documents/Budget-2026-27_Ann04.pdf"
+    },
+    {
+      "id": "tuc-37bf8bb3eda484a679e5861e",
+      "utility": "City of Tshwane Energy & Electricity",
+      "service_area": "most of Soshanguve",
+      "tariff_increase": "2026/27 (from 1 Jul 2026): reported 8.80% across the tariff book (focalenergy.co.za; verify against Tshwane promulgated tariffs).",
+      "reliability": "Overloaded Soshanguve 132/11kV substation (illegal connections) led Tshwane itself to impose load reduction on Soshanguve blocks (2024); repeated vandalism/theft at Block X substation and Kwagga infeed (Oct 2024). Tshwane has large non-technical losses.",
+      "sseg_rules": "SSEG must be registered/approved by the City; published export credit (~94c/kWh per 2026 tariff reading; earlier announcements varied 70c then 12c/kWh) but approvals for commercial export reportedly rare - size for self-consumption. Registration turnaround reported 3-6 weeks. Tshwane pursuing 1,000MW IPP procurement; no confirmed operational wheeling framework found.",
+      "verify_how": "Tshwane municipal account / prepaid token from Tshwane vendors; Tshwane load-shedding schedule by suburb; Tshwane call centre 012 358 9999.",
+      "source_url": "https://www.focalenergy.co.za/knowledge/tshwane-electricity-tariffs"
+    },
+    {
+      "id": "tuc-443d5d1efdbf656b0ce193a6",
+      "utility": "City of Tshwane Water & Sanitation",
+      "service_area": "Soshanguve, Mabopane, Ga-Rankuwa",
+      "tariff_increase": "2026/27 water % not confirmed from a primary source - check Tshwane promulgated tariffs.",
+      "reliability": "Bulk mainly from Rand Water: Mabopane and Ga-Rankuwa Industrial reservoirs supply Ga-Rankuwa (all ext), Mabopane (all ext), Soshanguve Block NW and Winterveld; Hartebeeshoek reservoir (Rand Water) supplies many Soshanguve blocks (outages Jul 2025). Magalies Water supplies Tshwane (Klipdrift scheme serving Hammanskraal/Temba area) - no source ties Magalies Water to Soshanguve/Mabopane/Ga-Rankuwa, so do not assert it.",
+      "sseg_rules": "n/a (water).",
+      "verify_how": "Tshwane municipal account (water is billed by Tshwane even where electricity is Eskom).",
+      "source_url": "https://www.joburgetc.com/news/rand-water-shutdown-mabopane-ga-rankuwa/"
+    },
+    {
+      "id": "tuc-e8af361f75e600d61f03b217",
+      "utility": "City Power Johannesburg",
+      "service_area": "Pimville, Kliptown, Klipspruit West, Nancefield, Devland, Eldorado Park, Noordgesig, Riverlea, Orlando Ekhaya, Doornkop",
+      "tariff_increase": "2026/27 (from 1 Jul 2026): 8.63% average; ~9.01% for business, LPU and commercial reseller tariffs. 2025/26 was 12.41% average, with business fixed/capacity charges +18.32% and energy +13.32%.",
+      "reliability": "Frequent substation/transformer failures and cable theft in southern Soweto (e.g. Pimville Zone 9 outage Jan 2026; 13-day Kliptown outage 2022). No load reduction regime like Eskom's, but ageing network.",
+      "sseg_rules": "SSEG must be registered with City Power; registration requires migration to a time-of-use tariff with fixed monthly charges (reported ~R1,094 capacity + R271 service). Feed-in tariff (~R0.86/kWh announced 2023) not operational as of reports - design for self-consumption. Registration turnaround reported 10-14 weeks. City of Johannesburg approved wheeling tariffs (2025/26) enabling third-party energy trading over City Power grid.",
+      "verify_how": "City Power bill / prepaid token (City Power vending), City Power load-shedding suburb list (citypower.co.za 'Names of suburbs' PDF), City Power call centre 0860 562 874.",
+      "source_url": "https://www.polarmonitoring.com/2026/07/30/city-power-tariffs-are-up-is-your-business-ready/"
+    },
+    {
+      "id": "tuc-89b7589cb93c3ef0a909a1c5",
+      "utility": "Eskom",
+      "service_area": "direct supply: most of Soweto, Mabopane, Ga-Rankuwa, Winterveld, parts of Soshanguve, most of Khayelitsha",
+      "tariff_increase": "+8.76% for direct customers from 1 Apr 2026 (FY2027), applied across Businessrate, Miniflex, Megaflex, Nightsave Urban, WEPS, Homepower/Homelight; +9.01% to municipal bulk from 1 Jul 2026. Prior year (FY2026) was +12.74% (NERSA approved 12.7%).",
+      "reliability": "No national load-shedding in 2025-26, but Eskom runs 'load reduction' in high-loss/non-payment township feeders (typically 05:00-09:00 and 17:00-22:00) - ongoing in Soweto, Mabopane, Ga-Rankuwa, Winterveld, Soshanguve in 2026. Eskom said 342,701 customers were removed from peak load reduction by 17 Apr 2026; aims to end it by 2027 via smart meters. Eskom suspended services in parts of Khayelitsha (Mar 2025) after staff hijacking. In Cape Town, Eskom areas do not get the City's Steenbras shield.",
+      "sseg_rules": "All grid-tied SSEG must register with Eskom even if non-exporting. <100kVA: Eskom registration only; 100kVA-1MW: Eskom + NERSA registration. Registration/connection fee waiver (incl. free smart meter, up to R10k urban / R36k rural) for systems up to 50kVA ran to 30 Sep 2026 - check if extended again. Export credits on bill at variable energy rate (Gen-offset / Gen-purchase / Gen-wheeling tariff options exist). Eskom accepts electrician CoC + NRS 097-2-1 inverter certificate.",
+      "verify_how": "Customer's bill/account number from Eskom or prepaid token receipt naming Eskom; Eskom load-shedding / load-reduction lookup by suburb (loadshedding.eskom.co.za) - if the suburb appears under Eskom direct it is Eskom-supplied; call 08600 ESKOM (08600 37566).",
+      "source_url": "https://www.eskom.co.za/distribution/2026-2027-tariff-increase/"
+    },
+    {
+      "id": "tuc-c3562dc9ec73790cbd8557fb",
+      "utility": "Johannesburg Water",
+      "service_area": "Soweto",
+      "tariff_increase": "2026/27: water +12.5%, sanitation +11% (City of Joburg approved tariffs).",
+      "reliability": "Persistent dry taps in Soweto and elsewhere in 2026 (TimesLIVE Feb 2026); July 2026 power outage disrupted water supply in southern Johannesburg. Bulk supplied by Rand Water.",
+      "sseg_rules": "n/a (water). Pitch angle: solar + battery backup for booster pumps / storage tanks at businesses.",
+      "verify_how": "City of Johannesburg municipal account.",
+      "source_url": "https://joburg.org.za/documents_/Documents/TARIFFS/Approved-Tariffs-20262027.pdf"
+    }
+  ]
+}

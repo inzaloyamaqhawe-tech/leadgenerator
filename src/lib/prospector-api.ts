@@ -13,14 +13,26 @@ export function appApiUrl(name: string) {
   return `${import.meta.env.BASE_URL}api/${name.endsWith(".php") ? name : `${name}.php`}`;
 }
 
+let csrfPromise: Promise<string> | null = null;
+async function crmCsrf() {
+  csrfPromise ??= fetch(`${window.location.origin}/crm/api/auth.php`, {
+    credentials: "same-origin",
+  }).then(async (response) => {
+    const payload = (await response.json()) as { csrf?: string };
+    if (!response.ok || !payload.csrf) throw new Error("Please sign in again.");
+    return payload.csrf;
+  });
+  return csrfPromise;
+}
+
 export async function prospectorApi<T = Record<string, unknown>>(
   action: string,
   values: Record<string, unknown> = {},
 ): Promise<T> {
-  const response = await fetch(appApiUrl("prospector.php"), {
+  const response = await fetch(`${window.location.origin}/crm/api/township-prospects.php`, {
     method: "POST",
     credentials: "same-origin",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "X-CSRF-Token": await crmCsrf() },
     body: JSON.stringify({ action, ...values }),
   });
   const payload = (await response.json().catch(() => ({}))) as Record<string, unknown>;
