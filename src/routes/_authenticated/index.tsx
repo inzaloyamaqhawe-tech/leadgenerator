@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/useAuth";
@@ -28,13 +28,13 @@ import {
 export const Route = createFileRoute("/_authenticated/")({
   head: () => ({
     meta: [
-      { title: "Township Prospector — Bolide" },
+      { title: "Township Prospector â€” Bolide" },
       {
         name: "description",
         content:
           "Find and work standalone high-energy township businesses as rooftop solar and battery PPA leads.",
       },
-      { property: "og:title", content: "Township Prospector — Bolide" },
+      { property: "og:title", content: "Township Prospector â€” Bolide" },
       {
         property: "og:description",
         content:
@@ -45,17 +45,16 @@ export const Route = createFileRoute("/_authenticated/")({
   component: Prospector,
 });
 
-const TABS:ProspectorSection[] = ["Dashboard","Leads", "Work board", "Utility map", "CRM sync"];
-
 function Prospector() {
   useRealtimeSync();
-  const { user, isAdmin, canEdit } = useAuth();
+  const { user, canEdit } = useAuth();
   const { data: leads = [], isLoading } = useLeads();
   const { data: rules = [] } = useUtilityRules();
   const queryClient = useQueryClient();
 
   const [tab, setTab] = useState<ProspectorSection>("Dashboard");
   const [compactNav,setCompactNav]=useState(()=>localStorage.getItem("bolide-prospector:compact-nav")==="1");
+  const [mobileNavOpen,setMobileNavOpen]=useState(false);
   const [area, setArea] = useState<string>("All areas");
   const [selected, setSelected] = useState<string | null>(null);
   const [addOpen, setAddOpen] = useState(false);
@@ -185,36 +184,12 @@ function Prospector() {
   const selectedLead = leads.find((l) => l.id === selected) ?? null;
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <ProspectorSidebar section={tab} onSection={setTab} compact={compactNav} onToggle={toggleCompactNav}/>
-      <div className="min-w-0 flex-1">
-       <AppHeader onAddLead={() => setAddOpen(true)} />
+    <div className="flex h-screen overflow-hidden bg-background">
+      <ProspectorSidebar section={tab} onSection={setTab} compact={compactNav} open={mobileNavOpen} onClose={()=>setMobileNavOpen(false)}/>
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+       <AppHeader onAddLead={() => setAddOpen(true)} onOpenNav={()=>setMobileNavOpen(true)} compactNav={compactNav} onToggleCompactNav={toggleCompactNav} />
 
-      <main className="mx-auto max-w-[1600px] space-y-6 px-4 py-6 sm:px-6 lg:px-8">
-        <nav className="flex flex-wrap gap-2 lg:hidden" aria-label="Sections">
-          {TABS.map((t) => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`rounded-full px-4 py-2 text-sm ${
-                tab === t
-                  ? "bg-plum text-plum-foreground"
-                  : "border border-line bg-card hover:bg-soft"
-              }`}
-            >
-              {t}
-            </button>
-          ))}
-          {isAdmin && (
-            <Link
-              to="/admin"
-              className="rounded-full border border-line bg-card px-4 py-2 text-sm hover:bg-soft"
-            >
-              Admin
-            </Link>
-          )}
-        </nav>
-
+      <main className="mx-auto w-full max-w-[1600px] flex-1 overflow-y-auto space-y-6 px-4 py-6 sm:px-6 lg:px-8">
         {tab === "Dashboard"&&<ProspectorDashboard leads={leads} onArea={value=>{setArea(value);setTab("Leads");}} onOpen={setSelected}/>}
 
         {tab!=="Dashboard"&&<><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
@@ -291,7 +266,7 @@ function Prospector() {
           </div>
         )}
 
-        {isLoading && <p className="text-sm text-muted-foreground">Loading leads…</p>}
+        {isLoading && <p className="text-sm text-muted-foreground">Loading leadsâ€¦</p>}
 
         {tab === "Leads" && <LeadsTable leads={filtered} onSelect={setSelected} />}
         {tab === "Work board" && (

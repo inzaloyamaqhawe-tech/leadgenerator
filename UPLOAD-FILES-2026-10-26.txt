@@ -1,59 +1,37 @@
-XNEELO LEAD GENERATOR ? CHANGED FILES ONLY
+﻿XNEELO LEAD GENERATOR UPLOAD — MENU, FIXED SHELL AND AREA CHART
 
 Source folder:
 deploy-leadgenerator
-Destination:
-/leadgenerator
 
-UPLOAD THESE NEW FILES
-Preserve the assets folder. Upload _shell.html last.
+Upload ONLY these changed files into the existing /leadgenerator folder, preserving the assets subfolder:
 
-1. assets/Wordmark-8wpRr0EV.js
-2. assets/_authenticated-QkazeMwW.js
-3. assets/admin-Db1K_ZMm.js
-4. assets/auth-BVK16EIR.js
-5. assets/dist-Urb_WChg.js
-6. assets/index-DDQ4J0oQ.js
-7. assets/label-1OUZXQSC.js
-8. assets/route-BwPeV9tT.js
-9. assets/select-Bch0xw2q.js
-10. assets/styles-lv272Y1R.css
-11. assets/useAuth-YgNaRhJk.js
-12. assets/utils-Cr8csmFw.js
-13. _shell.html ? upload this last
+1. assets/Wordmark-DUHc8spr.js
+2. assets/_authenticated-DPKLbVuD.js
+3. assets/admin-CRVyhA5p.js
+4. assets/auth-1EogjT0C.js
+5. assets/dist-BJVHsVLS.js
+6. assets/index-C4JFLZXF.js
+7. assets/label-HoR4jVVa.js
+8. assets/route-BwAHedbW.js
+9. assets/select-C6tcDw_0.js
+10. assets/styles-C6btTToi.css
+11. assets/useAuth-DjH1OvmT.js
+12. assets/utils-BcNDutCG.js
+13. _shell.html — upload this last
 
-WHY ALL ASSET FILES CHANGED
-The source update changed the dashboard, sidebar, header, theme CSS and authentication request typing. Vite regenerated the hashed frontend chunks because they reference one another by filename. The application needs the matching set above even when a particular chunk's underlying feature did not materially change.
+What changed:
+- Desktop menu collapse is now an icon in the top header.
+- Sidebar and header stay fixed; the data content scrolls independently.
+- Mobile navigation is a proper hamburger drawer and hides completely when closed.
+- Leads by area is now a donut chart with the top eight areas and a grouped Other slice.
+- Named chart slices and legend entries open that area's leads.
 
-UNCHANGED ? DO NOT REUPLOAD
-
+Unchanged — do not upload:
 - .htaccess
-- api/.htaccess
-- api/ai-draft.php
-- api/bootstrap.php
-- api/config.example.php
-- api/config.php
-- api/prospector.php
-- bolide-logo.png
-- favicon.ico
-- faviconbolide.png
+- api/*
+- images and favicons
 - robots.txt
-- Xneelo database and tables
+- database/configuration files
 
-OPTIONAL CLEANUP AFTER THE NEW SITE WORKS
-These previous hashed assets may then be deleted from /leadgenerator/assets:
-
-- Wordmark-CF0Reer7.js
-- _authenticated-DKHowgBa.js
-- admin-DUephgiC.js
-- auth-BY2leoG8.js
-- dist-D6zAV55T.js
-- index-Dy-mS3cK.js
-- label-AnqcoTNb.js
-- route-C5gNiPP5.js
-- select-CRAaUHq1.js
-- styles-C561ZTNm.css
-- useAuth-DqCanP5d.js
-- utils-CqIo64fa.js
-
-No PHP, configuration or database update is required for this interface release.
+No SQL or database update is required for this interface update.
+Do not upload a ZIP and do not create another leadgenerator folder.

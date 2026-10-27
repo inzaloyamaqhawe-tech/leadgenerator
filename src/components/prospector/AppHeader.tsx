@@ -2,17 +2,19 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/prospector/Wordmark";
 import { useAuth } from "@/hooks/useAuth";
-import { Moon,Sun } from "lucide-react";
+import { Menu, Moon, PanelLeftClose, PanelLeftOpen, Sun } from "lucide-react";
 import { useEffect,useState } from "react";
 
-export function AppHeader({ onAddLead }: { onAddLead: () => void }) {
+export function AppHeader({ onAddLead,onOpenNav,compactNav,onToggleCompactNav }: { onAddLead: () => void;onOpenNav:()=>void;compactNav:boolean;onToggleCompactNav:()=>void }) {
   const { profile, signOut, canEdit } = useAuth();
   const [dark,setDark]=useState(()=>localStorage.getItem("bolide-prospector:theme")==="dark");
   useEffect(()=>{document.documentElement.classList.toggle("dark",dark);localStorage.setItem("bolide-prospector:theme",dark?"dark":"light");},[dark]);
 
   return (
-    <header className="border-b border-line bg-card">
+    <header className="shrink-0 border-b border-line bg-card">
       <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
+        <Button variant="outline" size="icon" className="rounded-xl lg:hidden" onClick={onOpenNav} aria-label="Open menu"><Menu className="h-5 w-5"/></Button>
+        <Button variant="outline" size="icon" className="hidden rounded-xl lg:inline-flex" onClick={onToggleCompactNav} title={compactNav?"Show menu names":"Hide menu names"} aria-label={compactNav?"Show menu names":"Hide menu names"}>{compactNav?<PanelLeftOpen className="h-5 w-5"/>:<PanelLeftClose className="h-5 w-5"/>}</Button>
         <Link to="/" aria-label="Bolide home" className="lg:hidden">
           <Wordmark />
         </Link>

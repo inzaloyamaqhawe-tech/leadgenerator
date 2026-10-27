@@ -1,4 +1,4 @@
-# Township Prospector integration â€” 26 October 2026
+# Township Prospector integration Ã¢â‚¬â€ 26 October 2026
 
 ## Delivered
 
@@ -24,7 +24,7 @@ This API creates and manages leads supplied by a person or another approved serv
 
 ## User onboarding during rollout
 
-Do not enable open signup while email verification is disabled. In Supabase **Authentication â†’ Users**, create each approved user with a temporary password and enable **Auto Confirm User**. The existing database trigger creates the profile and member role. An administrator can then adjust team, role and active status in Township Prospector.
+Do not enable open signup while email verification is disabled. In Supabase **Authentication Ã¢â€ â€™ Users**, create each approved user with a temporary password and enable **Auto Confirm User**. The existing database trigger creates the profile and member role. An administrator can then adjust team, role and active status in Township Prospector.
 
 For bulk onboarding later, configure a private Supabase service-role key on Xneelo and add a protected admin import endpoint. Never place that key in `.env` variables beginning with `VITE_` or in browser JavaScript.
 
@@ -38,12 +38,12 @@ Only an explicitly interested prospect is linked to `deals`. All earlier prospec
 
 The core workflow works without these services. They improve research and automation when Bolide is ready to configure provider accounts and budgets.
 
-1. **Google Places API** â€” discover businesses, addresses, phone numbers, websites and place IDs. Calls should run through a server endpoint so the key is never exposed in the browser.
-2. **Google Geocoding API** â€” convert verified addresses to map coordinates.
-3. **Google Solar API** â€” estimate roof geometry and solar potential where coverage is available. It does not reliably prove that panels are already installed, so manual roof verification and photo evidence remain necessary.
-4. **Current satellite or aerial imagery provider** â€” optional visual panel checks where licensing permits it. A person should confirm any automated indication before it becomes company data.
-5. **Utility data sources** â€” Eskom and municipal supply areas do not have one dependable nationwide public API. Keep the existing rule table and confirm the supplier from the customer's bill.
-6. **AI drafting provider** â€” optional. Configure a server-side key for outreach drafts; the lead workflow itself does not depend on AI.
+1. **Google Places API** Ã¢â‚¬â€ discover businesses, addresses, phone numbers, websites and place IDs. Calls should run through a server endpoint so the key is never exposed in the browser.
+2. **Google Geocoding API** Ã¢â‚¬â€ convert verified addresses to map coordinates.
+3. **Google Solar API** Ã¢â‚¬â€ estimate roof geometry and solar potential where coverage is available. It does not reliably prove that panels are already installed, so manual roof verification and photo evidence remain necessary.
+4. **Current satellite or aerial imagery provider** Ã¢â‚¬â€ optional visual panel checks where licensing permits it. A person should confirm any automated indication before it becomes company data.
+5. **Utility data sources** Ã¢â‚¬â€ Eskom and municipal supply areas do not have one dependable nationwide public API. Keep the existing rule table and confirm the supplier from the customer's bill.
+6. **AI drafting provider** Ã¢â‚¬â€ optional. Configure a server-side key for outreach drafts; the lead workflow itself does not depend on AI.
 
 For each paid API, restrict the key to the server/IP or approved HTTP referrer, set a budget alert, and store it only in the private Xneelo `api/config.php`.
 
@@ -63,7 +63,7 @@ For each paid API, restrict the key to the server/IP or approved HTTP referrer, 
 ```
 
 The parent WordPress rewrite leaves this real directory alone. The subdirectory `.htaccess` serves generated files and PHP endpoints directly and sends client routes such as `/leadgenerator/auth` to `_shell.html`.
-# OpenAI drafting migration â€” 27 October 2026
+# OpenAI drafting migration Ã¢â‚¬â€ 27 October 2026
 
 - Replaced the unavailable Lovable AI gateway with the OpenAI Responses API.
 - Kept the OpenAI project key in ignored server configuration only.
@@ -81,3 +81,11 @@ The parent WordPress rewrite leaves this real directory alone. The subdirectory 
 - Added optional Bolide dark mode; the existing light appearance remains the default. Both modes use Bolide magenta, orange, plum and neutral design tokens.
 - Audited company-data controls: lead creation, lead edits, roof/contact details, status changes, notes, photos, ownership, CRM promotion and admin roles continue through the Xneelo-backed APIs. Search, filters, selected tabs, menu width and theme are view preferences and remain local to the browser.
 - No lead records or database schema were replaced for this interface update.
+
+## 2026-10-27 — fixed application shell and scalable area chart
+- Moved the desktop sidebar collapse control into the top header as an icon-only action.
+- Replaced the mobile tab strip with an off-canvas hamburger drawer.
+- Fixed the sidebar and header to the viewport so large lead sets scroll only in the content region.
+- Replaced the unbounded leads-by-area list with a clickable donut chart showing the eight largest areas and grouping the remainder.
+- Kept light mode as the default and retained the existing Bolide dark mode.
+- TypeScript and production build passed.
