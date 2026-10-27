@@ -68,13 +68,14 @@ return [
     'crm_api_url' => 'https://bolide.co.za/crm/api/township-prospects.php',
     'crm_auth_url' => 'https://bolide.co.za/crm/api/auth.php',
     'crm_api_secret' => {crm_secret},
-    'lovable_api_key' => {lovable_key},
+    'openai_api_key' => {openai_key},
+    'openai_model' => 'gpt-4.1-mini',
 ];
 """.format(
     supabase_url=php_quote(supabase_url),
     supabase_key=php_quote(supabase_key),
     crm_secret=php_quote(crm_secret),
-    lovable_key=php_quote(os.environ.get("LOVABLE_API_KEY", "")),
+    openai_key=php_quote(env.get("OPENAI_API_KEY") or os.environ.get("OPENAI_API_KEY", "")),
 )
 (DEST / "api" / "config.php").write_text(config, encoding="utf-8", newline="\n")
 

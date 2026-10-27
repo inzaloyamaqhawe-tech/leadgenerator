@@ -294,47 +294,16 @@ export function LeadDrawer({
     setDrafting(true);
     setDraft("");
     try {
-      const { data: sess } = await supabase.auth.getSession();
       const res = await fetch(appApiUrl("ai-draft.php"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sess.session?.access_token ?? ""}`,
         },
         body: JSON.stringify({ leadId: lead!.id, channel, language }),
       });
-      if (!res.ok) throw new Error(await res.text());
-      if (!import.meta.env.DEV) {
-        const payload = (await res.json()) as { text?: string; error?: string };
-        if (!payload.text) throw new Error(payload.error || "No draft was returned.");
-        setDraft(payload.text);
-        return;
-      }
-      if (!res.body) throw new Error("No draft was returned.");
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-      for (;;) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() ?? "";
-        for (const line of lines) {
-          if (!line.startsWith("data: ")) continue;
-          const payload = line.slice(6).trim();
-          if (payload === "[DONE]") continue;
-          try {
-            const json = JSON.parse(payload) as {
-              choices?: { delta?: { content?: string } }[];
-            };
-            const chunk = json.choices?.[0]?.delta?.content;
-            if (chunk) setDraft((d) => d + chunk);
-          } catch {
-            /* partial frame */
-          }
-        }
-      }
+      const payload = (await res.json()) as { text?: string; error?: string };
+      if (!res.ok || !payload.text) throw new Error(payload.error || "No draft was returned.");
+      setDraft(payload.text);
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Could not draft the message");
     } finally {

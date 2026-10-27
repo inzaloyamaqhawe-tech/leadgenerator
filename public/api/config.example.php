@@ -5,5 +5,6 @@ return [
     'crm_api_url' => 'https://bolide.co.za/crm/api/township-prospects.php',
     'crm_auth_url' => 'https://bolide.co.za/crm/api/auth.php',
     'crm_api_secret' => 'same-private-api-secret-as-the-crm',
-    'lovable_api_key' => '',
+    'openai_api_key' => '',
+    'openai_model' => 'gpt-4.1-mini',
 ];
