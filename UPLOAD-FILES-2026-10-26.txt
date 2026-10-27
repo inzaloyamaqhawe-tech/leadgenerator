@@ -9,15 +9,15 @@ Then upload ONLY these changed files into the existing /leadgenerator folder. Pr
 1. api/bootstrap.php
 2. api/generate-area.php
 3. assets/Wordmark-DUHc8spr.js
-4. assets/_authenticated-CJWGSeRH.js
-5. assets/admin-DT0n2bzG.js
-6. assets/auth-C3wKHTSW.js
-7. assets/dist-D9JD10j8.js
-8. assets/index-CpjobezS.js
-9. assets/label-DhxQrW3E.js
-10. assets/route-XdKQa1MP.js
-11. assets/select-CEJZFwEr.js
-12. assets/styles-wUa469WK.css
+4. assets/_authenticated-CdX_1GMd.js
+5. assets/admin-Dh9dhYDu.js
+6. assets/auth-V2u4wubK.js
+7. assets/dist-BMCi6ZBr.js
+8. assets/index-DUX5CqZU.js
+9. assets/label-CLvUnA5h.js
+10. assets/route-Cn-ggzg0.js
+11. assets/select-CGjW12NC.js
+12. assets/styles-BAJFE13z.css
 13. assets/useAuth-DjH1OvmT.js
 14. assets/utils-BcNDutCG.js
 15. _shell.html — UPLOAD THIS LAST
@@ -29,7 +29,7 @@ What changed:
 - The area electricity/water profile is saved for the Utility map.
 - The same area can be researched again; existing matches are skipped and newly found businesses are added.
 - Add lead remains available for referrals, field discoveries and individual opportunities.
-- Lead status now uses colored horizontal bars with counts and percentages.
+- Lead status now uses colored horizontal bars with counts and percentages.`r`n- Work board keeps KPIs, area controls and filters fixed; only cards inside each status lane scroll.`r`n- Utility map keeps its heading fixed; only utility content scrolls and table headings stay visible.
 
 Required private configuration:
 - Existing api/config.php must retain openai_api_key.
@@ -43,3 +43,4 @@ Unchanged — do not upload:
 - database files
 
 No SQL update is required. Do not upload a ZIP and do not create another leadgenerator folder.
+

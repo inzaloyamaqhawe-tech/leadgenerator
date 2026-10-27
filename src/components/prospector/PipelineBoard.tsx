@@ -16,7 +16,7 @@ export function PipelineBoard({
   const [dragOver, setDragOver] = useState<string | null>(null);
 
   return (
-    <div className="flex gap-3 overflow-x-auto pb-4">
+    <div className="flex min-h-0 flex-1 gap-3 overflow-x-auto overflow-y-hidden pb-2">
       {STATUSES.map((status) => {
         const column = leads.filter((l) => l.status === status);
         return (
@@ -35,7 +35,7 @@ export function PipelineBoard({
               const id = e.dataTransfer.getData("text/plain");
               if (id) onStatusChange(id, status);
             }}
-            className={`w-64 shrink-0 rounded-xl border p-3 ${
+            className={`flex h-full min-h-0 w-64 shrink-0 flex-col rounded-xl border p-3 ${
               dragOver === status ? "border-primary bg-pink" : "border-line bg-soft"
             }`}
           >
@@ -43,7 +43,7 @@ export function PipelineBoard({
               <span className="text-sm font-semibold">{status}</span>
               <span className="num text-xs text-muted-foreground">{column.length}</span>
             </div>
-            <div className="space-y-2">
+            <div className="min-h-0 flex-1 space-y-2 overflow-y-auto overscroll-contain pr-1">
               {column.map((l) => (
                 <div
                   key={l.id}

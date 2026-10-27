@@ -118,3 +118,10 @@ The parent WordPress rewrite leaves this real directory alone. The subdirectory 
 - Replaced the Lead status dot list with fixed colored horizontal bars, counts and percentages.
 - TypeScript checking and the `/leadgenerator/` production build passed.
 - Protected area generation with same-origin validation and a per-user rate limit to prevent duplicate concurrent research requests.
+
+## 2026-10-27 — fixed Work board and Utility map scrolling
+
+- Applied the CRM fixed-workspace pattern to Work board and Utility map.
+- Work board keeps KPIs, areas and filters visible while each status lane scrolls its own cards.
+- Utility map keeps its heading visible while utility content scrolls; rule-table column headings are sticky.
+- TypeScript checking and the production build passed.

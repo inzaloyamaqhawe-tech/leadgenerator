@@ -12,8 +12,8 @@ export function UtilityMapTab() {
   const { data: rules = [] } = useUtilityRules();
 
   return (
-    <div className="space-y-6">
-      <div>
+    <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-hidden">
+      <div className="shrink-0">
         <h2 className="font-display text-xl">Who supplies electricity and water</h2>
         <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
           Suppliers are assigned from Eskom and municipal outage notices, load-reduction lists and
@@ -22,6 +22,7 @@ export function UtilityMapTab() {
         </p>
       </div>
 
+      <div className="min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain pr-1">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {context.map((c) => {
           const { name, subtitle } = splitName(c.utility);
@@ -53,11 +54,11 @@ export function UtilityMapTab() {
         )}
       </div>
 
-      <div>
+      <div className="min-h-0">
         <h3 className="mb-3 font-display text-lg">Rules by township and suburb</h3>
-        <div className="overflow-x-auto rounded-xl border border-line bg-card">
+        <div className="max-h-[55vh] overflow-auto rounded-xl border border-line bg-card">
           <table className="w-full min-w-[800px] text-sm">
-            <thead>
+            <thead className="sticky top-0 z-10 bg-card shadow-[0_1px_0_var(--line)]">
               <tr className="border-b border-line text-left text-xs uppercase tracking-wide text-muted-foreground">
                 <th className="px-3 py-3">Township</th>
                 <th className="px-3 py-3">Suburb / block / zone</th>
@@ -120,6 +121,7 @@ export function UtilityMapTab() {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -188,7 +188,7 @@ function Prospector() {
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
        <AppHeader onAddLead={() => setAddOpen(true)} onAddArea={() => setAreaOpen(true)} onOpenNav={()=>setMobileNavOpen(true)} compactNav={compactNav} onToggleCompactNav={toggleCompactNav} />
 
-      <main className={`mx-auto w-full max-w-[1600px] flex-1 space-y-6 px-4 py-6 sm:px-6 lg:px-8 ${tab==="Leads"?"flex min-h-0 flex-col overflow-hidden":"overflow-y-auto"}`}>
+      <main className={`mx-auto w-full max-w-[1600px] flex-1 space-y-6 px-4 py-6 sm:px-6 lg:px-8 ${["Leads","Work board","Utility map"].includes(tab)?"flex min-h-0 flex-col overflow-hidden":"overflow-y-auto"}`}>
         {tab === "Dashboard"&&<ProspectorDashboard leads={leads} onArea={value=>{setArea(value);setTab("Leads");}} onOpen={setSelected}/>}
 
         {tab!=="Dashboard"&&<><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
