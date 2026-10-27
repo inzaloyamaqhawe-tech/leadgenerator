@@ -1,40 +1,45 @@
-﻿XNEELO LEAD GENERATOR UPLOAD — APPROVED 27 OCTOBER 2026 BUILD
+﻿XNEELO LEAD GENERATOR UPLOAD — AREA GENERATION UPDATE
 
 Source folder:
 deploy-leadgenerator
 
-Upload ONLY these changed files into the existing /leadgenerator folder. Preserve the assets subfolder and upload _shell.html last.
+First upload the two CRM PHP files listed in PROJECTS/BOLIDECRM/app/UPLOAD-FILES-2026-10-26.txt.
+Then upload ONLY these changed files into the existing /leadgenerator folder. Preserve the assets and api subfolders. Upload _shell.html last.
 
-1. assets/Wordmark-DUHc8spr.js
-2. assets/_authenticated-D8MRVdPS.js
-3. assets/admin-BSmj01_B.js
-4. assets/auth-CXQl0DKO.js
-5. assets/dist-Bv5EYytt.js
-6. assets/index-DSj-PMAs.js
-7. assets/label-Cm6zDoU8.js
-8. assets/route-D3yAyHbs.js
-9. assets/select-D4HAnEaG.js
-10. assets/styles-BsvR8WoU.css
-11. assets/useAuth-DjH1OvmT.js
-12. assets/utils-BcNDutCG.js
-13. prospector-mall-lineart.png
-14. _shell.html — UPLOAD THIS LAST
+1. api/bootstrap.php
+2. api/generate-area.php
+3. assets/Wordmark-DUHc8spr.js
+4. assets/_authenticated-CJWGSeRH.js
+5. assets/admin-DT0n2bzG.js
+6. assets/auth-C3wKHTSW.js
+7. assets/dist-D9JD10j8.js
+8. assets/index-CpjobezS.js
+9. assets/label-DhxQrW3E.js
+10. assets/route-XdKQa1MP.js
+11. assets/select-CEJZFwEr.js
+12. assets/styles-wUa469WK.css
+13. assets/useAuth-DjH1OvmT.js
+14. assets/utils-BcNDutCG.js
+15. _shell.html — UPLOAD THIS LAST
 
-What changed in this build:
-- Chart-only leads-by-area view; area names and totals appear on hover and slices open their areas.
-- Interested status automatically starts CRM routing; the old Move to CRM button is removed.
-- Owner and duplicate decisions appear only when the system cannot route safely.
-- Fixed Leads workspace: KPIs, area controls, filters and column headings stay visible while rows scroll.
-- Real 25/50/100-row pagination with Previous and Next controls.
-- Approved login illustration: a visible pen reveals the white isometric mall, roof, solar panels, sun and rays sequentially; the pen is then put aside and the completed drawing holds for about three seconds before repeating.
+What changed:
+- Add area now opens an automated area research form rather than the manual lead form.
+- Area research uses the private server-side OpenAI key with web search and structured lead output.
+- New leads are validated, scored, tiered, deduplicated and appended to the existing 412 records.
+- The area electricity/water profile is saved for the Utility map.
+- The same area can be researched again; existing matches are skipped and newly found businesses are added.
+- Add lead remains available for referrals, field discoveries and individual opportunities.
+- Lead status now uses colored horizontal bars with counts and percentages.
 
-Unchanged in this build — do not upload again:
+Required private configuration:
+- Existing api/config.php must retain openai_api_key.
+- openai_research_model is optional; if absent the system uses the existing openai_model.
+- The current OpenAI project previously returned exhausted credits, so generation will require credits on that project.
+
+Unchanged — do not upload:
+- api/config.php or any credentials
 - .htaccess
-- api/*, including the private api/config.php
-- bolide-logo.png
-- favicon.ico
-- faviconbolide.png
-- robots.txt
-- database/configuration files
+- logos and favicons
+- database files
 
-No SQL or database update is required. Do not upload a ZIP and do not create another leadgenerator folder.
+No SQL update is required. Do not upload a ZIP and do not create another leadgenerator folder.

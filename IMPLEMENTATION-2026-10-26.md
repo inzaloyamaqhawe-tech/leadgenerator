@@ -107,3 +107,14 @@ The parent WordPress rewrite leaves this real directory alone. The subdirectory 
 - Added faint sunlight rays around the sun and kept all artwork within the dark Bolide login panel.
 - Added the generated illustration as `public/prospector-mall-lineart.png` and included it in the Xneelo deployment package.
 - TypeScript checking and the `/leadgenerator/` production build passed.
+
+## 2026-10-27 — automated Add area lead generation
+
+- Separated Add area from Add lead. Add area now researches a location and Add lead remains available for referrals and individual discoveries.
+- Added server-side OpenAI Responses API research using web search and strict structured lead output. The private key stays in PHP configuration and is never included in browser assets.
+- Added transactional CRM batch insertion with validation, scoring, tiering, activity logging and duplicate checks across normalized business/area, address, phone and website.
+- Added automatic default utility-rule creation/update so generated areas appear in Utility map data.
+- Added shopping centre/mall and residential estate/complex lead classifications.
+- Replaced the Lead status dot list with fixed colored horizontal bars, counts and percentages.
+- TypeScript checking and the `/leadgenerator/` production build passed.
+- Protected area generation with same-origin validation and a per-user rate limit to prevent duplicate concurrent research requests.

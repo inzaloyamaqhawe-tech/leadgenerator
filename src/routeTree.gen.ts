@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ApiAiDraftRouteImport } from './routes/api/ai-draft'
+import { Route as ApiGenerateAreaRouteImport } from './routes/api/generate-area'
 import { Route as ApiProspectorRouteImport } from './routes/api/prospector'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
@@ -40,6 +41,11 @@ const ApiAiDraftRoute = ApiAiDraftRouteImport.update({
   path: '/api/ai-draft',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiGenerateAreaRoute = ApiGenerateAreaRouteImport.update({
+  id: '/api/generate-area',
+  path: '/api/generate-area',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiProspectorRoute = ApiProspectorRouteImport.update({
   id: '/api/prospector',
   path: '/api/prospector',
@@ -51,12 +57,14 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/api/ai-draft': typeof ApiAiDraftRoute
+  '/api/generate-area': typeof ApiGenerateAreaRoute
   '/api/prospector': typeof ApiProspectorRoute
 }
 export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/api/ai-draft': typeof ApiAiDraftRoute
+  '/api/generate-area': typeof ApiGenerateAreaRoute
   '/api/prospector': typeof ApiProspectorRoute
   '/': typeof AuthenticatedIndexRoute
 }
@@ -66,20 +74,34 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/api/ai-draft': typeof ApiAiDraftRoute
+  '/api/generate-area': typeof ApiGenerateAreaRoute
   '/api/prospector': typeof ApiProspectorRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/admin' | '/api/ai-draft' | '/api/prospector'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/admin'
+    | '/api/ai-draft'
+    | '/api/generate-area'
+    | '/api/prospector'
   fileRoutesByTo: FileRoutesByTo
-  to: '/auth' | '/admin' | '/api/ai-draft' | '/api/prospector' | '/'
+  to:
+    | '/auth'
+    | '/admin'
+    | '/api/ai-draft'
+    | '/api/generate-area'
+    | '/api/prospector'
+    | '/'
   id:
     | '__root__'
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/admin'
     | '/api/ai-draft'
+    | '/api/generate-area'
     | '/api/prospector'
     | '/_authenticated/'
   fileRoutesById: FileRoutesById
@@ -88,6 +110,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   ApiAiDraftRoute: typeof ApiAiDraftRoute
+  ApiGenerateAreaRoute: typeof ApiGenerateAreaRoute
   ApiProspectorRoute: typeof ApiProspectorRoute
 }
 
@@ -128,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAiDraftRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/generate-area': {
+      id: '/api/generate-area'
+      path: '/api/generate-area'
+      fullPath: '/api/generate-area'
+      preLoaderRoute: typeof ApiGenerateAreaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/prospector': {
       id: '/api/prospector'
       path: '/api/prospector'
@@ -155,6 +185,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   ApiAiDraftRoute: ApiAiDraftRoute,
+  ApiGenerateAreaRoute: ApiGenerateAreaRoute,
   ApiProspectorRoute: ApiProspectorRoute,
 }
 export const routeTree = rootRouteImport

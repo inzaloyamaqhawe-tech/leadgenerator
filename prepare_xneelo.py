@@ -70,6 +70,7 @@ return [
     'crm_api_secret' => {crm_secret},
     'openai_api_key' => {openai_key},
     'openai_model' => 'gpt-4.1-mini',
+    'openai_research_model' => 'gpt-4.1-mini',
 ];
 """.format(
     supabase_url=php_quote(supabase_url),

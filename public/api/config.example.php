@@ -7,4 +7,5 @@ return [
     'crm_api_secret' => 'same-private-api-secret-as-the-crm',
     'openai_api_key' => '',
     'openai_model' => 'gpt-4.1-mini',
+    'openai_research_model' => 'gpt-4.1-mini',
 ];

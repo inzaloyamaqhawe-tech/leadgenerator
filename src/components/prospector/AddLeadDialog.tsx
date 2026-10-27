@@ -110,9 +110,9 @@ export function AddLeadDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Add lead</DialogTitle>
+          <DialogTitle>Add referral or individual lead</DialogTitle>
           <DialogDescription>
-            Capture a standalone high-energy business you found in the field.
+            Capture a referral, walk-in discovery or specific business opportunity for work tracking.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={save} className="grid gap-4 sm:grid-cols-2">

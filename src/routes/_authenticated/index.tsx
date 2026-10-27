@@ -13,6 +13,7 @@ import { UtilityMapTab } from "@/components/prospector/UtilityMapTab";
 import { CrmTab } from "@/components/prospector/CrmTab";
 import { LeadDrawer } from "@/components/prospector/LeadDrawer";
 import { AddLeadDialog } from "@/components/prospector/AddLeadDialog";
+import { AddAreaDialog } from "@/components/prospector/AddAreaDialog";
 import { ProspectorDashboard } from "@/components/prospector/ProspectorDashboard";
 import { ProspectorSidebar, type ProspectorSection } from "@/components/prospector/ProspectorSidebar";
 import { Input } from "@/components/ui/input";
@@ -58,7 +59,7 @@ function Prospector() {
   const [area, setArea] = useState<string>("All areas");
   const [selected, setSelected] = useState<string | null>(null);
   const [addOpen, setAddOpen] = useState(false);
-  const [presetTownship, setPresetTownship] = useState<string | undefined>(undefined);
+  const [areaOpen, setAreaOpen] = useState(false);
 
   const [q, setQ] = useState("");
   const [industry, setIndustry] = useState("any");
@@ -185,7 +186,7 @@ function Prospector() {
     <div className="flex h-screen overflow-hidden bg-background">
       <ProspectorSidebar section={tab} onSection={setTab} compact={compactNav} open={mobileNavOpen} onClose={()=>setMobileNavOpen(false)}/>
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
-       <AppHeader onAddLead={() => setAddOpen(true)} onOpenNav={()=>setMobileNavOpen(true)} compactNav={compactNav} onToggleCompactNav={toggleCompactNav} />
+       <AppHeader onAddLead={() => setAddOpen(true)} onAddArea={() => setAreaOpen(true)} onOpenNav={()=>setMobileNavOpen(true)} compactNav={compactNav} onToggleCompactNav={toggleCompactNav} />
 
       <main className={`mx-auto w-full max-w-[1600px] flex-1 space-y-6 px-4 py-6 sm:px-6 lg:px-8 ${tab==="Leads"?"flex min-h-0 flex-col overflow-hidden":"overflow-y-auto"}`}>
         {tab === "Dashboard"&&<ProspectorDashboard leads={leads} onArea={value=>{setArea(value);setTab("Leads");}} onOpen={setSelected}/>}
@@ -215,8 +216,7 @@ function Prospector() {
             <Chip
               active={false}
               onClick={() => {
-                setPresetTownship("");
-                setAddOpen(true);
+                setAreaOpen(true);
               }}
             >
               + Add area
@@ -282,13 +282,8 @@ function Prospector() {
       </div>
 
       <LeadDrawer lead={selectedLead} rules={rules} onClose={() => setSelected(null)} />
-      <AddLeadDialog
-        open={addOpen}
-        onOpenChange={setAddOpen}
-        areas={areas}
-        presetTownship={presetTownship}
-        onCreated={(id) => setSelected(id)}
-      />
+      <AddLeadDialog open={addOpen} onOpenChange={setAddOpen} areas={areas} onCreated={(id) => setSelected(id)} />
+      <AddAreaDialog open={areaOpen} onOpenChange={setAreaOpen} onGenerated={async generatedArea=>{await queryClient.invalidateQueries({queryKey:["leads"]});await queryClient.invalidateQueries({queryKey:["utility_rules"]});setArea(generatedArea);setTab("Leads");}}/>
     </div>
   );
 }

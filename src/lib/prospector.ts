@@ -10,6 +10,8 @@ export const STATUSES = [
 export type Status = (typeof STATUSES)[number];
 
 export const INDUSTRIES = [
+  "Shopping centre / mall",
+  "Residential estate / complex",
   "Fuel station",
   "Quick-service restaurant",
   "Butchery / shisanyama",
@@ -36,6 +38,8 @@ export const DEFAULT_AREAS: Record<string, [string, string]> = {
 };
 
 export const INDUSTRY_WEIGHTS: Record<string, number> = {
+  "Shopping centre / mall": 28,
+  "Residential estate / complex": 20,
   "Private clinic / hospital": 30,
   "Beverage distribution depot": 30,
   "Cold storage / ice": 26,

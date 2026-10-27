@@ -5,7 +5,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { Menu, Moon, PanelLeftClose, PanelLeftOpen, Sun } from "lucide-react";
 import { useEffect,useState } from "react";
 
-export function AppHeader({ onAddLead,onOpenNav,compactNav,onToggleCompactNav }: { onAddLead: () => void;onOpenNav:()=>void;compactNav:boolean;onToggleCompactNav:()=>void }) {
+export function AppHeader({ onAddLead,onAddArea,onOpenNav,compactNav,onToggleCompactNav }: { onAddLead: () => void;onAddArea: () => void;onOpenNav:()=>void;compactNav:boolean;onToggleCompactNav:()=>void }) {
   const { profile, signOut, canEdit } = useAuth();
   const [dark,setDark]=useState(()=>localStorage.getItem("bolide-prospector:theme")==="dark");
   useEffect(()=>{document.documentElement.classList.toggle("dark",dark);localStorage.setItem("bolide-prospector:theme",dark?"dark":"light");},[dark]);
@@ -32,8 +32,13 @@ export function AppHeader({ onAddLead,onOpenNav,compactNav,onToggleCompactNav }:
             </a>
           </Button>
           {canEdit && (
-            <Button className="rounded-full bolide-gradient" onClick={onAddLead}>
+            <Button variant="outline" className="rounded-full" onClick={onAddLead}>
               Add lead
+            </Button>
+          )}
+          {canEdit && (
+            <Button className="rounded-full bolide-gradient" onClick={onAddArea}>
+              Add area
             </Button>
           )}
         </div>
