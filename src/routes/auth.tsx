@@ -73,4 +73,11 @@ function AuthPage() {
   );
 }
 
-function RoofSketch(){return <div className="relative my-6 hidden min-h-72 flex-1 items-center justify-center lg:flex" aria-hidden="true"><svg viewBox="0 0 700 360" className="h-full max-h-[360px] w-full overflow-visible" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"><g className="prospector-sketch"><path pathLength="1" d="M90 245L350 105L610 245"/><path pathLength="1" d="M125 226V302H575V226"/><path pathLength="1" d="M350 105V302"/><path pathLength="1" d="M185 238L316 167L316 237L185 284Z"/><path pathLength="1" d="M384 167L515 238L515 284L384 237Z"/><path pathLength="1" d="M207 226L294 179M207 250L294 203M406 180L493 227M406 204L493 251"/><path pathLength="1" d="M250 202V261M450 202V261"/></g><g className="prospector-pen" fill="currentColor" stroke="none"><path d="M0 0L34 8L12 30L0 0Z"/><rect x="23" y="-2" width="58" height="16" rx="7" transform="rotate(45 23 -2)"/></g></svg></div>}
+function RoofSketch(){const art=`${import.meta.env.BASE_URL}prospector-mall-lineart.png`;const drawPath="M170 28L530 28L530 82L170 82L170 136L530 136L530 190L170 190L170 244L530 244L530 298L170 298L170 352L530 352L530 406L170 406L170 470L530 470";return <div className="relative my-3 hidden min-h-72 flex-1 items-center justify-center lg:flex" aria-hidden="true">
+  <svg viewBox="0 0 700 520" className="h-full max-h-[460px] w-full overflow-visible text-white" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+   <defs><mask id="prospector-draw-mask" maskUnits="userSpaceOnUse"><path pathLength="1" d={drawPath} className="prospector-reveal-stroke"/></mask></defs>
+   <image href={art} x="150" y="0" width="400" height="500" preserveAspectRatio="xMidYMid meet" mask="url(#prospector-draw-mask)"/>
+   <g className="prospector-sun-rays" strokeWidth="3" opacity=".42"><path d="M286 3V18M286 101V116M229 59H244M328 59H343M246 19L257 30M316 88L327 99M326 19L315 30M257 88L246 99"/></g>
+   <g className="prospector-pen" style={{offsetPath:`path('${drawPath}')`}}><g transform="translate(-70 -12) scale(.58)" strokeWidth="4"><rect x="0" y="0" width="78" height="24" rx="9" fill="#2b1b24"/><path d="M78 0L104 12L78 24Z" fill="white"/><path d="M104 12L113 12"/><path d="M12 0V-9H58"/><path d="M18 7H62" opacity=".65"/></g></g>
+  </svg>
+ </div>}

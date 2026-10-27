@@ -99,3 +99,11 @@ The parent WordPress rewrite leaves this real directory alone. The subdirectory 
 - TypeScript and production builds passed.
 - Changed the Leads workspace so KPIs, area controls, filters and table headings stay visible while rows scroll.
 - Replaced incremental rendering with 25/50/100-row pagination and page navigation for large datasets.
+
+## 2026-10-27 — approved sequential login drawing
+
+- Replaced the hand-built roof sketch with the approved white isometric mall and rooftop solar illustration.
+- Synchronized the pen and illustration on one ten-second timeline: the pen appears first, reveals the artwork behind its nib, disappears when drawing is complete, and leaves the finished scene visible for about three seconds before the next cycle.
+- Added faint sunlight rays around the sun and kept all artwork within the dark Bolide login panel.
+- Added the generated illustration as `public/prospector-mall-lineart.png` and included it in the Xneelo deployment package.
+- TypeScript checking and the `/leadgenerator/` production build passed.

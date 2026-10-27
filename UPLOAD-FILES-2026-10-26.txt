@@ -1,38 +1,28 @@
-﻿XNEELO LEAD GENERATOR UPLOAD — LATEST COMPLETE INTERFACE UPDATE
+﻿Upload the CONTENTS of deploy-leadgenerator into Xneelo /leadgenerator.
+Keep the paths below exactly as shown. Do not create a second leadgenerator folder.
 
-Source folder:
-deploy-leadgenerator
-
-Upload ONLY these changed build files into the existing /leadgenerator folder, preserving the assets subfolder:
-
-1. assets/Wordmark-DUHc8spr.js
-2. assets/_authenticated-aKVeKNYS.js
-3. assets/admin-B80EQ15d.js
-4. assets/auth-qHgvhzNl.js
-5. assets/dist-CG3vZM8q.js
-6. assets/index-CSxx8W_-.js
-7. assets/label-C-gcBHCA.js
-8. assets/route-MPpiLUs6.js
-9. assets/select-tcloYvD8.js
-10. assets/styles-DyXHaAVi.css
-11. assets/useAuth-DjH1OvmT.js
-12. assets/utils-BcNDutCG.js
-13. _shell.html — upload this last
-
-What changed:
-- Chart-only leads-by-area view; names and totals appear on hover and slices open their areas.
-- Interested status automatically starts CRM routing; the old Move to CRM button is removed.
-- Owner/duplicate input appears only when the system cannot decide safely.
-- Login has the fast pen animation drawing a mall roof and solar panels, with wording lower down.
-- Leads workspace keeps KPIs, areas and filters fixed while only the table rows scroll.
-- Table column titles remain fixed during row scrolling.
-- Real pagination renders 25, 50 or 100 rows per page with Previous/Next controls.
-
-Unchanged — do not upload:
-- .htaccess
-- api/*
-- images and favicons
-- robots.txt
-- database/configuration files
-
-No SQL or database update is required. Do not upload a ZIP or create another leadgenerator folder.
+.htaccess
+_shell.html
+api/.htaccess
+api/ai-draft.php
+api/bootstrap.php
+api/config.example.php
+api/config.php
+api/prospector.php
+assets/Wordmark-DUHc8spr.js
+assets/_authenticated-D8MRVdPS.js
+assets/admin-BSmj01_B.js
+assets/auth-CXQl0DKO.js
+assets/dist-Bv5EYytt.js
+assets/index-DSj-PMAs.js
+assets/label-Cm6zDoU8.js
+assets/route-D3yAyHbs.js
+assets/select-D4HAnEaG.js
+assets/styles-BsvR8WoU.css
+assets/useAuth-DjH1OvmT.js
+assets/utils-BcNDutCG.js
+bolide-logo.png
+favicon.ico
+faviconbolide.png
+prospector-mall-lineart.png
+robots.txt
