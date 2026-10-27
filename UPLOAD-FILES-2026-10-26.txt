@@ -1,47 +1,38 @@
-﻿XNEELO LEAD GENERATOR UPLOAD — AREA GENERATION UPDATE
+﻿XNEELO LEAD GENERATOR UPLOAD — WORK BOARD & UTILITY MAP SCROLLING FIX ONLY
 
 Source folder:
 deploy-leadgenerator
 
-First upload the two CRM PHP files listed in PROJECTS/BOLIDECRM/app/UPLOAD-FILES-2026-10-26.txt.
-Then upload ONLY these changed files into the existing /leadgenerator folder. Preserve the assets and api subfolders. Upload _shell.html last.
+Upload ONLY these files into the existing /leadgenerator folder. Preserve the assets subfolder. Upload _shell.html last.
 
-1. api/bootstrap.php
-2. api/generate-area.php
-3. assets/Wordmark-DUHc8spr.js
-4. assets/_authenticated-CdX_1GMd.js
-5. assets/admin-Dh9dhYDu.js
-6. assets/auth-V2u4wubK.js
-7. assets/dist-BMCi6ZBr.js
-8. assets/index-DUX5CqZU.js
-9. assets/label-CLvUnA5h.js
-10. assets/route-Cn-ggzg0.js
-11. assets/select-CGjW12NC.js
-12. assets/styles-BAJFE13z.css
-13. assets/useAuth-DjH1OvmT.js
-14. assets/utils-BcNDutCG.js
-15. _shell.html — UPLOAD THIS LAST
+1. assets/_authenticated-CdX_1GMd.js
+2. assets/admin-Dh9dhYDu.js
+3. assets/auth-V2u4wubK.js
+4. assets/dist-BMCi6ZBr.js
+5. assets/index-DUX5CqZU.js
+6. assets/label-CLvUnA5h.js
+7. assets/route-Cn-ggzg0.js
+8. assets/select-CGjW12NC.js
+9. assets/styles-BAJFE13z.css
+10. _shell.html — UPLOAD THIS LAST
 
-What changed:
-- Add area now opens an automated area research form rather than the manual lead form.
-- Area research uses the private server-side OpenAI key with web search and structured lead output.
-- New leads are validated, scored, tiered, deduplicated and appended to the existing 412 records.
-- The area electricity/water profile is saved for the Utility map.
-- The same area can be researched again; existing matches are skipped and newly found businesses are added.
-- Add lead remains available for referrals, field discoveries and individual opportunities.
-- Lead status now uses colored horizontal bars with counts and percentages.
-- Work board keeps KPIs, area controls and filters fixed; only cards inside each status lane scroll.
-- Utility map keeps its heading fixed; only utility content scrolls and table headings stay visible.
+What changed in this upload:
+- Work board keeps KPIs, area controls and filters fixed.
+- Each Work board status lane scrolls its own lead cards vertically.
+- The Work board itself can scroll horizontally between status lanes.
+- Utility map keeps its heading fixed while the utility content scrolls.
+- Utility-rule table headings remain visible while its rows scroll.
 
-Required private configuration:
-- Existing api/config.php must retain openai_api_key.
-- openai_research_model is optional; if absent the system uses the existing openai_model.
-- The current OpenAI project previously returned exhausted credits, so generation will require credits on that project.
-
-Unchanged — do not upload:
+Already uploaded in the previous area-generation update — do not upload again:
+- api/bootstrap.php
+- api/generate-area.php
+- CRM api/township-functions.php
+- CRM api/township-prospects.php
+- assets/Wordmark-DUHc8spr.js
+- assets/useAuth-DjH1OvmT.js
+- assets/utils-BcNDutCG.js
 - api/config.php or any credentials
-- .htaccess
-- logos and favicons
-- database files
+- logos, favicons, .htaccess or database files
 
-No SQL update is required. Do not upload a ZIP and do not create another leadgenerator folder.
+No SQL, CRM or PHP update is required for this scrolling-only upload.
+Do not upload a ZIP and do not create another leadgenerator folder.
