@@ -84,12 +84,8 @@ for bundle in (DEST / "assets").glob("*.js"):
         raise SystemExit("A private CRM secret was found in a public JavaScript bundle.")
 
 files = sorted(str(path.relative_to(DEST)).replace("\\", "/") for path in DEST.rglob("*") if path.is_file())
-(ROOT / "UPLOAD-FILES-2026-10-26.txt").write_text(
-    "Upload the CONTENTS of deploy-leadgenerator into Xneelo /leadgenerator.\n"
-    "Keep the paths below exactly as shown. Do not create a second leadgenerator folder.\n\n"
-    + "\n".join(files)
-    + "\n",
-    encoding="utf-8",
-    newline="\n",
-)
+# The upload manifest is maintained manually so it can distinguish changed build
+# files from unchanged server configuration. Do not replace it with a full package
+# inventory: that can incorrectly instruct an incremental deployment to overwrite
+# the private Xneelo config.
 print(f"Prepared {len(files)} individual files in {DEST}")

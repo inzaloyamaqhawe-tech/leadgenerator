@@ -1,28 +1,40 @@
-﻿Upload the CONTENTS of deploy-leadgenerator into Xneelo /leadgenerator.
-Keep the paths below exactly as shown. Do not create a second leadgenerator folder.
+﻿XNEELO LEAD GENERATOR UPLOAD — APPROVED 27 OCTOBER 2026 BUILD
 
-.htaccess
-_shell.html
-api/.htaccess
-api/ai-draft.php
-api/bootstrap.php
-api/config.example.php
-api/config.php
-api/prospector.php
-assets/Wordmark-DUHc8spr.js
-assets/_authenticated-D8MRVdPS.js
-assets/admin-BSmj01_B.js
-assets/auth-CXQl0DKO.js
-assets/dist-Bv5EYytt.js
-assets/index-DSj-PMAs.js
-assets/label-Cm6zDoU8.js
-assets/route-D3yAyHbs.js
-assets/select-D4HAnEaG.js
-assets/styles-BsvR8WoU.css
-assets/useAuth-DjH1OvmT.js
-assets/utils-BcNDutCG.js
-bolide-logo.png
-favicon.ico
-faviconbolide.png
-prospector-mall-lineart.png
-robots.txt
+Source folder:
+deploy-leadgenerator
+
+Upload ONLY these changed files into the existing /leadgenerator folder. Preserve the assets subfolder and upload _shell.html last.
+
+1. assets/Wordmark-DUHc8spr.js
+2. assets/_authenticated-D8MRVdPS.js
+3. assets/admin-BSmj01_B.js
+4. assets/auth-CXQl0DKO.js
+5. assets/dist-Bv5EYytt.js
+6. assets/index-DSj-PMAs.js
+7. assets/label-Cm6zDoU8.js
+8. assets/route-D3yAyHbs.js
+9. assets/select-D4HAnEaG.js
+10. assets/styles-BsvR8WoU.css
+11. assets/useAuth-DjH1OvmT.js
+12. assets/utils-BcNDutCG.js
+13. prospector-mall-lineart.png
+14. _shell.html — UPLOAD THIS LAST
+
+What changed in this build:
+- Chart-only leads-by-area view; area names and totals appear on hover and slices open their areas.
+- Interested status automatically starts CRM routing; the old Move to CRM button is removed.
+- Owner and duplicate decisions appear only when the system cannot route safely.
+- Fixed Leads workspace: KPIs, area controls, filters and column headings stay visible while rows scroll.
+- Real 25/50/100-row pagination with Previous and Next controls.
+- Approved login illustration: a visible pen reveals the white isometric mall, roof, solar panels, sun and rays sequentially; the pen is then put aside and the completed drawing holds for about three seconds before repeating.
+
+Unchanged in this build — do not upload again:
+- .htaccess
+- api/*, including the private api/config.php
+- bolide-logo.png
+- favicon.ico
+- faviconbolide.png
+- robots.txt
+- database/configuration files
+
+No SQL or database update is required. Do not upload a ZIP and do not create another leadgenerator folder.
