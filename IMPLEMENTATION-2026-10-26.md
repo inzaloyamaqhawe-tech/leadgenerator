@@ -72,3 +72,12 @@ The parent WordPress rewrite leaves this real directory alone. The subdirectory 
 - Updated local and Xneelo routes to return the same JSON response format.
 - Configured the economical `gpt-4.1-mini` model for lead outreach drafts.
 - Authentication succeeds, but the supplied OpenAI project currently returns `credit_balance_exhausted`; API credits must be added before generation can complete.
+
+## Dashboard, sidebar and theme update ? 27 October 2026
+
+- Replaced the top-only section navigation with a persistent desktop sidebar for Dashboard, Leads, Work board, Utility map, CRM sync and Team admin.
+- Added a modern dashboard showing total areas, total leads, conversations, solar checks pending, CRM conversions, leads per area, status distribution and recently updated leads.
+- Added a persistent compact mode that hides menu names, expands the data workspace and shows labels when icons are hovered.
+- Added optional Bolide dark mode; the existing light appearance remains the default. Both modes use Bolide magenta, orange, plum and neutral design tokens.
+- Audited company-data controls: lead creation, lead edits, roof/contact details, status changes, notes, photos, ownership, CRM promotion and admin roles continue through the Xneelo-backed APIs. Search, filters, selected tabs, menu width and theme are view preferences and remain local to the browser.
+- No lead records or database schema were replaced for this interface update.

@@ -20,12 +20,9 @@ const AuthContext = createContext<AuthState | null>(null);
 export const crmAuthUrl = () => `${window.location.origin}/crm/api/auth.php`;
 
 async function authRequest(values?: Record<string, unknown>) {
-  const response = await fetch(crmAuthUrl(), {
-    method: values ? "POST" : "GET",
-    credentials: "same-origin",
-    headers: values ? { "Content-Type": "application/json" } : undefined,
-    body: values ? JSON.stringify(values) : undefined,
-  });
+  const init:RequestInit={method:values?"POST":"GET",credentials:"same-origin"};
+  if(values){init.headers={"Content-Type":"application/json"};init.body=JSON.stringify(values);}
+  const response = await fetch(crmAuthUrl(), init);
   const payload = (await response.json().catch(() => ({}))) as { ok?: boolean; user?: AuthUser | null; error?: string };
   if (!response.ok || payload.ok === false) throw new Error(payload.error || "Unable to authenticate.");
   return payload.user ?? null;

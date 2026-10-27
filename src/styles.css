@@ -132,6 +132,23 @@
   --accent-foreground: oklch(0.99 0.006 59.7);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
+  --plum: oklch(0.18 0.025 344);
+  --plum-foreground: oklch(0.99 0.006 59.7);
+  --pink: oklch(0.34 0.055 350);
+  --peach: oklch(0.34 0.05 55);
+  --soft: oklch(0.31 0.025 344);
+  --line: oklch(1 0 0 / 14%);
+  --amberpill: oklch(0.38 0.07 70);
+  --amberpill-foreground: oklch(0.9 0.08 75);
+  --bluepill: oklch(0.34 0.05 245);
+  --bluepill-foreground: oklch(0.88 0.06 245);
+  --greenpill: oklch(0.34 0.05 155);
+  --greenpill-foreground: oklch(0.88 0.07 155);
+  --sidebar: oklch(0.22 0.026 343.9);
+  --sidebar-foreground: oklch(0.99 0.006 59.7);
+  --sidebar-accent: oklch(0.33 0.04 350);
+  --sidebar-accent-foreground: oklch(0.99 0.006 59.7);
+  --sidebar-border: oklch(1 0 0 / 14%);
 }
 
 @layer base {

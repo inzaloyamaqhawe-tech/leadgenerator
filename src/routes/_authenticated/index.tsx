@@ -13,6 +13,8 @@ import { UtilityMapTab } from "@/components/prospector/UtilityMapTab";
 import { CrmTab } from "@/components/prospector/CrmTab";
 import { LeadDrawer } from "@/components/prospector/LeadDrawer";
 import { AddLeadDialog } from "@/components/prospector/AddLeadDialog";
+import { ProspectorDashboard } from "@/components/prospector/ProspectorDashboard";
+import { ProspectorSidebar, type ProspectorSection } from "@/components/prospector/ProspectorSidebar";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -43,7 +45,7 @@ export const Route = createFileRoute("/_authenticated/")({
   component: Prospector,
 });
 
-const TABS = ["Leads", "Work board", "Utility map", "CRM sync"] as const;
+const TABS:ProspectorSection[] = ["Dashboard","Leads", "Work board", "Utility map", "CRM sync"];
 
 function Prospector() {
   useRealtimeSync();
@@ -52,7 +54,8 @@ function Prospector() {
   const { data: rules = [] } = useUtilityRules();
   const queryClient = useQueryClient();
 
-  const [tab, setTab] = useState<(typeof TABS)[number]>("Leads");
+  const [tab, setTab] = useState<ProspectorSection>("Dashboard");
+  const [compactNav,setCompactNav]=useState(()=>localStorage.getItem("bolide-prospector:compact-nav")==="1");
   const [area, setArea] = useState<string>("All areas");
   const [selected, setSelected] = useState<string | null>(null);
   const [addOpen, setAddOpen] = useState(false);
@@ -75,6 +78,7 @@ function Prospector() {
   useEffect(() => {
     localStorage.setItem("bolide.area", area);
   }, [area]);
+  function toggleCompactNav(){setCompactNav(value=>{const next=!value;localStorage.setItem("bolide-prospector:compact-nav",next?"1":"0");return next;});}
 
   const areas = useMemo(
     () => Array.from(new Set(leads.map((l) => l.township).filter(Boolean))).sort(),
@@ -181,11 +185,13 @@ function Prospector() {
   const selectedLead = leads.find((l) => l.id === selected) ?? null;
 
   return (
-    <div className="min-h-screen bg-background">
-      <AppHeader onAddLead={() => setAddOpen(true)} />
+    <div className="flex min-h-screen bg-background">
+      <ProspectorSidebar section={tab} onSection={setTab} compact={compactNav} onToggle={toggleCompactNav}/>
+      <div className="min-w-0 flex-1">
+       <AppHeader onAddLead={() => setAddOpen(true)} />
 
-      <main className="mx-auto max-w-[1400px] space-y-6 px-4 py-6 sm:px-6">
-        <nav className="flex flex-wrap gap-2" aria-label="Sections">
+      <main className="mx-auto max-w-[1600px] space-y-6 px-4 py-6 sm:px-6 lg:px-8">
+        <nav className="flex flex-wrap gap-2 lg:hidden" aria-label="Sections">
           {TABS.map((t) => (
             <button
               key={t}
@@ -209,7 +215,9 @@ function Prospector() {
           )}
         </nav>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+        {tab === "Dashboard"&&<ProspectorDashboard leads={leads} onArea={value=>{setArea(value);setTab("Leads");}} onOpen={setSelected}/>}
+
+        {tab!=="Dashboard"&&<><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
           <div className="rounded-xl bg-plum p-4 text-plum-foreground sm:col-span-2 lg:col-span-1">
             <div className="text-xs opacity-80">Leads</div>
             <div className="num bolide-gradient-text text-4xl font-bold">{kpis.total}</div>
@@ -241,7 +249,7 @@ function Prospector() {
               + Add area
             </Chip>
           )}
-        </div>
+        </div></>}
 
         {(tab === "Leads" || tab === "Work board") && (
           <div className="grid gap-3 rounded-xl border border-line bg-card p-4 md:grid-cols-3 lg:grid-cols-6">
@@ -297,6 +305,8 @@ function Prospector() {
         {tab === "Utility map" && <UtilityMapTab />}
         {tab === "CRM sync" && <CrmTab />}
       </main>
+
+      </div>
 
       <LeadDrawer lead={selectedLead} rules={rules} onClose={() => setSelected(null)} />
       <AddLeadDialog
