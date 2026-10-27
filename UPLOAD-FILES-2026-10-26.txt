@@ -29,7 +29,9 @@ What changed:
 - The area electricity/water profile is saved for the Utility map.
 - The same area can be researched again; existing matches are skipped and newly found businesses are added.
 - Add lead remains available for referrals, field discoveries and individual opportunities.
-- Lead status now uses colored horizontal bars with counts and percentages.`r`n- Work board keeps KPIs, area controls and filters fixed; only cards inside each status lane scroll.`r`n- Utility map keeps its heading fixed; only utility content scrolls and table headings stay visible.
+- Lead status now uses colored horizontal bars with counts and percentages.
+- Work board keeps KPIs, area controls and filters fixed; only cards inside each status lane scroll.
+- Utility map keeps its heading fixed; only utility content scrolls and table headings stay visible.
 
 Required private configuration:
 - Existing api/config.php must retain openai_api_key.
@@ -43,4 +45,3 @@ Unchanged — do not upload:
 - database files
 
 No SQL update is required. Do not upload a ZIP and do not create another leadgenerator folder.
-
