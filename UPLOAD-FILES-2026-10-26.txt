@@ -1,27 +1,59 @@
-Upload the CONTENTS of deploy-leadgenerator into Xneelo /leadgenerator.
-Keep the paths below exactly as shown. Do not create a second leadgenerator folder.
+XNEELO LEAD GENERATOR ? CHANGED FILES ONLY
 
-.htaccess
-_shell.html
-api/.htaccess
-api/ai-draft.php
-api/bootstrap.php
-api/config.example.php
-api/config.php
-api/prospector.php
-assets/Wordmark-8wpRr0EV.js
-assets/_authenticated-QkazeMwW.js
-assets/admin-Db1K_ZMm.js
-assets/auth-BVK16EIR.js
-assets/dist-Urb_WChg.js
-assets/index-DDQ4J0oQ.js
-assets/label-1OUZXQSC.js
-assets/route-BwPeV9tT.js
-assets/select-Bch0xw2q.js
-assets/styles-lv272Y1R.css
-assets/useAuth-YgNaRhJk.js
-assets/utils-Cr8csmFw.js
-bolide-logo.png
-favicon.ico
-faviconbolide.png
-robots.txt
+Source folder:
+deploy-leadgenerator
+Destination:
+/leadgenerator
+
+UPLOAD THESE NEW FILES
+Preserve the assets folder. Upload _shell.html last.
+
+1. assets/Wordmark-8wpRr0EV.js
+2. assets/_authenticated-QkazeMwW.js
+3. assets/admin-Db1K_ZMm.js
+4. assets/auth-BVK16EIR.js
+5. assets/dist-Urb_WChg.js
+6. assets/index-DDQ4J0oQ.js
+7. assets/label-1OUZXQSC.js
+8. assets/route-BwPeV9tT.js
+9. assets/select-Bch0xw2q.js
+10. assets/styles-lv272Y1R.css
+11. assets/useAuth-YgNaRhJk.js
+12. assets/utils-Cr8csmFw.js
+13. _shell.html ? upload this last
+
+WHY ALL ASSET FILES CHANGED
+The source update changed the dashboard, sidebar, header, theme CSS and authentication request typing. Vite regenerated the hashed frontend chunks because they reference one another by filename. The application needs the matching set above even when a particular chunk's underlying feature did not materially change.
+
+UNCHANGED ? DO NOT REUPLOAD
+
+- .htaccess
+- api/.htaccess
+- api/ai-draft.php
+- api/bootstrap.php
+- api/config.example.php
+- api/config.php
+- api/prospector.php
+- bolide-logo.png
+- favicon.ico
+- faviconbolide.png
+- robots.txt
+- Xneelo database and tables
+
+OPTIONAL CLEANUP AFTER THE NEW SITE WORKS
+These previous hashed assets may then be deleted from /leadgenerator/assets:
+
+- Wordmark-CF0Reer7.js
+- _authenticated-DKHowgBa.js
+- admin-DUephgiC.js
+- auth-BY2leoG8.js
+- dist-D6zAV55T.js
+- index-Dy-mS3cK.js
+- label-AnqcoTNb.js
+- route-C5gNiPP5.js
+- select-CRAaUHq1.js
+- styles-C561ZTNm.css
+- useAuth-DqCanP5d.js
+- utils-CqIo64fa.js
+
+No PHP, configuration or database update is required for this interface release.
