@@ -1,30 +1,32 @@
-﻿XNEELO LEAD GENERATOR UPLOAD — MENU, FIXED SHELL AND AREA CHART
+﻿XNEELO LEAD GENERATOR UPLOAD — LATEST COMPLETE INTERFACE UPDATE
 
 Source folder:
 deploy-leadgenerator
 
-Upload ONLY these changed files into the existing /leadgenerator folder, preserving the assets subfolder:
+Upload ONLY these changed build files into the existing /leadgenerator folder, preserving the assets subfolder:
 
 1. assets/Wordmark-DUHc8spr.js
-2. assets/_authenticated-DPKLbVuD.js
-3. assets/admin-CRVyhA5p.js
-4. assets/auth-1EogjT0C.js
-5. assets/dist-BJVHsVLS.js
-6. assets/index-C4JFLZXF.js
-7. assets/label-HoR4jVVa.js
-8. assets/route-BwAHedbW.js
-9. assets/select-C6tcDw_0.js
-10. assets/styles-C6btTToi.css
+2. assets/_authenticated-aKVeKNYS.js
+3. assets/admin-B80EQ15d.js
+4. assets/auth-qHgvhzNl.js
+5. assets/dist-CG3vZM8q.js
+6. assets/index-CSxx8W_-.js
+7. assets/label-C-gcBHCA.js
+8. assets/route-MPpiLUs6.js
+9. assets/select-tcloYvD8.js
+10. assets/styles-DyXHaAVi.css
 11. assets/useAuth-DjH1OvmT.js
 12. assets/utils-BcNDutCG.js
 13. _shell.html — upload this last
 
 What changed:
-- Desktop menu collapse is now an icon in the top header.
-- Sidebar and header stay fixed; the data content scrolls independently.
-- Mobile navigation is a proper hamburger drawer and hides completely when closed.
-- Leads by area is now a donut chart with the top eight areas and a grouped Other slice.
-- Named chart slices and legend entries open that area's leads.
+- Chart-only leads-by-area view; names and totals appear on hover and slices open their areas.
+- Interested status automatically starts CRM routing; the old Move to CRM button is removed.
+- Owner/duplicate input appears only when the system cannot decide safely.
+- Login has the fast pen animation drawing a mall roof and solar panels, with wording lower down.
+- Leads workspace keeps KPIs, areas and filters fixed while only the table rows scroll.
+- Table column titles remain fixed during row scrolling.
+- Real pagination renders 25, 50 or 100 rows per page with Previous/Next controls.
 
 Unchanged — do not upload:
 - .htaccess
@@ -33,5 +35,4 @@ Unchanged — do not upload:
 - robots.txt
 - database/configuration files
 
-No SQL or database update is required for this interface update.
-Do not upload a ZIP and do not create another leadgenerator folder.
+No SQL or database update is required. Do not upload a ZIP or create another leadgenerator folder.

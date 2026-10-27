@@ -50,7 +50,8 @@ function AuthPage() {
     <div className="grid min-h-screen lg:grid-cols-2">
       <div className="flex flex-col justify-between bg-plum px-8 py-10 text-plum-foreground lg:px-14 lg:py-16">
         <Wordmark size="lg" />
-        <div className="mt-10">
+        <RoofSketch />
+        <div className="mt-auto pt-8">
           <h1 className="font-display text-3xl leading-tight lg:text-4xl">Township Prospector</h1>
           <p className="mt-4 max-w-md text-sm text-plum-foreground/75">One prospecting pipeline for Bolide, Airnergize Ventures, Fungi Energy and New GX.</p>
         </div>
@@ -71,3 +72,5 @@ function AuthPage() {
     </div>
   );
 }
+
+function RoofSketch(){return <div className="relative my-6 hidden min-h-72 flex-1 items-center justify-center lg:flex" aria-hidden="true"><svg viewBox="0 0 700 360" className="h-full max-h-[360px] w-full overflow-visible" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"><g className="prospector-sketch"><path pathLength="1" d="M90 245L350 105L610 245"/><path pathLength="1" d="M125 226V302H575V226"/><path pathLength="1" d="M350 105V302"/><path pathLength="1" d="M185 238L316 167L316 237L185 284Z"/><path pathLength="1" d="M384 167L515 238L515 284L384 237Z"/><path pathLength="1" d="M207 226L294 179M207 250L294 203M406 180L493 227M406 204L493 251"/><path pathLength="1" d="M250 202V261M450 202V261"/></g><g className="prospector-pen" fill="currentColor" stroke="none"><path d="M0 0L34 8L12 30L0 0Z"/><rect x="23" y="-2" width="58" height="16" rx="7" transform="rotate(45 23 -2)"/></g></svg></div>}

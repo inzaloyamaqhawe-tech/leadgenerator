@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Lead } from "@/lib/prospector";
 import { ProviderPill, RoofPill, StatusPill, TierBadge } from "@/components/prospector/pills";
 import { Button } from "@/components/ui/button";
 
 export function LeadsTable({ leads, onSelect }: { leads: Lead[]; onSelect: (id: string) => void }) {
-  const [limit, setLimit] = useState(80);
-  const visible = leads.slice(0, limit);
-  const left = leads.length - visible.length;
+  const [pageSize, setPageSize] = useState(25);
+  const [page, setPage] = useState(1);
+  const pageCount = Math.max(1, Math.ceil(leads.length / pageSize));
+  useEffect(() => setPage(1), [leads, pageSize]);
+  const visible = useMemo(() => leads.slice((page - 1) * pageSize, page * pageSize), [leads,page,pageSize]);
 
   if (leads.length === 0) {
     return (
@@ -17,10 +19,10 @@ export function LeadsTable({ leads, onSelect }: { leads: Lead[]; onSelect: (id: 
   }
 
   return (
-    <div className="space-y-4">
-      <div className="overflow-x-auto rounded-xl border border-line bg-card">
+    <div className="flex min-h-0 flex-1 flex-col gap-4">
+      <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-line bg-card">
         <table className="w-full min-w-[900px] text-sm">
-          <thead>
+          <thead className="sticky top-0 z-10 bg-card shadow-[0_1px_0_var(--line)]">
             <tr className="border-b border-line text-left text-xs uppercase tracking-wide text-muted-foreground">
               <th className="px-3 py-3">Tier</th>
               <th className="px-3 py-3">Business</th>
@@ -85,17 +87,11 @@ export function LeadsTable({ leads, onSelect }: { leads: Lead[]; onSelect: (id: 
           </tbody>
         </table>
       </div>
-      {left > 0 && (
-        <div className="text-center">
-          <Button
-            variant="outline"
-            className="rounded-full"
-            onClick={() => setLimit((n) => n + 80)}
-          >
-            Show more ({left} left)
-          </Button>
-        </div>
-      )}
+      <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 text-sm">
+        <label className="flex items-center gap-2 text-muted-foreground">Rows per page<select value={pageSize} onChange={(event)=>setPageSize(Number(event.target.value))} className="rounded-lg border border-line bg-card px-3 py-2 text-foreground"><option value={25}>25</option><option value={50}>50</option><option value={100}>100</option></select></label>
+        <span className="text-muted-foreground">{leads.length?`${(page-1)*pageSize+1}–${Math.min(page*pageSize,leads.length)} of ${leads.length}`:"0 leads"}</span>
+        <div className="flex items-center gap-2"><Button type="button" variant="outline" size="sm" className="rounded-full" disabled={page===1} onClick={()=>setPage(value=>Math.max(1,value-1))}>Previous</Button><span className="num min-w-20 text-center">Page {page} of {pageCount}</span><Button type="button" variant="outline" size="sm" className="rounded-full" disabled={page===pageCount} onClick={()=>setPage(value=>Math.min(pageCount,value+1))}>Next</Button></div>
+      </div>
     </div>
   );
 }

@@ -234,6 +234,43 @@ export function LeadDrawer({
     });
   }
 
+  async function markInterestedAndPromote() {
+    const matchingOwner = crmOwners.find(
+      (candidate) => candidate.email.toLowerCase() === profile?.email?.toLowerCase(),
+    );
+    if (!matchingOwner) {
+      openPromotion();
+      toast.info("Choose the responsible CRM owner to finish routing this lead.");
+      return;
+    }
+    const requestId = crypto.randomUUID();
+    setSaving(true);
+    try {
+      const preview = await prospectorApi<{ matches: PromotionMatch[] }>("promotionPreview", {
+        leadId: lead!.id,
+        ownerId: matchingOwner.id,
+      });
+      const matches = preview.matches.filter((match) => match.potential);
+      if (matches.length) {
+        setPromotion({open:true,ownerId:matchingOwner.id,matches,decision:"",targetDealId:"",reason:"",requestId});
+        toast.info("A possible CRM match needs one duplicate decision.");
+        return;
+      }
+      const result = await prospectorApi<{ dealId: string }>("promote", {
+        leadId: lead!.id,
+        ownerId: matchingOwner.id,
+        requestId,
+      });
+      await refresh();
+      toast.success("Interested lead moved to the CRM pipeline automatically.");
+      window.open(`https://bolide.co.za/crm/deals?open=${encodeURIComponent(result.dealId)}`,"_blank","noopener,noreferrer");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not move the lead to CRM");
+    } finally {
+      setSaving(false);
+    }
+  }
+
   async function submitPromotion() {
     if (!promotion.ownerId) {
       toast.error("Choose the responsible CRM owner.");
@@ -377,11 +414,7 @@ export function LeadDrawer({
                 <Select
                   value={lead.status}
                   disabled={!canEdit}
-                  onValueChange={(v) =>
-                    v === "Interested"
-                      ? openPromotion()
-                      : void patch({ status: v }, `Status changed to ${v}`)
-                  }
+                  onValueChange={(v) => v === "Interested" ? void markInterestedAndPromote() : void patch({ status: v }, `Status changed to ${v}`)}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -422,10 +455,6 @@ export function LeadDrawer({
                   >
                     Open linked CRM deal
                   </a>
-                </Button>
-              ) : canEdit ? (
-                <Button className="w-full rounded-full bolide-gradient" onClick={openPromotion}>
-                  Move to CRM pipeline
                 </Button>
               ) : null}
             </Section>
@@ -873,7 +902,7 @@ export function LeadDrawer({
                 ? "Moving…"
                 : promotion.matches === null
                   ? "Review and move"
-                  : "Move to CRM pipeline"}
+                  : "Confirm pipeline routing"}
             </Button>
           </DialogFooter>
         </DialogContent>

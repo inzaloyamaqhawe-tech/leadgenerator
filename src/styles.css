@@ -186,3 +186,11 @@
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
+
+/* Login illustration: the pen rapidly sketches the roof, building and solar array. */
+.prospector-sketch path{stroke-dasharray:1;stroke-dashoffset:1;animation:prospector-draw 5s ease-in-out infinite}
+.prospector-sketch path:nth-child(2){animation-delay:.35s}.prospector-sketch path:nth-child(3){animation-delay:.65s}.prospector-sketch path:nth-child(4){animation-delay:1s}.prospector-sketch path:nth-child(5){animation-delay:1.35s}.prospector-sketch path:nth-child(6){animation-delay:1.75s}.prospector-sketch path:nth-child(7){animation-delay:2.1s}
+.prospector-pen{offset-path:path("M90 245 L350 105 L610 245 L575 302 L125 302 L125 226 L350 105 L185 238 L316 167 L316 237 L185 284 L384 167 L515 238 L515 284 L384 237 L207 226 L294 179 L207 250 L294 203 L406 180 L493 227 L406 204 L493 251");offset-rotate:auto 35deg;animation:prospector-pen 5s ease-in-out infinite}
+@keyframes prospector-draw{0%,8%{stroke-dashoffset:1;opacity:0}12%{opacity:1}68%,88%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes prospector-pen{0%{offset-distance:0%;opacity:0}4%,86%{opacity:1}88%{offset-distance:100%;opacity:1}96%,100%{offset-distance:100%;opacity:0}}
+@media (prefers-reduced-motion:reduce){.prospector-sketch path{animation:none;stroke-dashoffset:0}.prospector-pen{display:none}}

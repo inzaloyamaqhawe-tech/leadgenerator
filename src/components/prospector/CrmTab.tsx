@@ -21,8 +21,8 @@ export function CrmTab() {
         <div className="rounded-xl border border-line bg-card p-4">
           <h3 className="font-display text-base">Interested to pipeline</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Move to CRM pipeline checks for an existing company, solution and location before it
-            creates or links the CRM deal. Repeated submissions cannot create another deal.
+            Marking a prospect Interested automatically checks the company, solution and location,
+            then creates or links the CRM deal. Repeated submissions cannot create another deal.
           </p>
         </div>
       </div>
@@ -33,9 +33,9 @@ export function CrmTab() {
           <li>Research the business, verify contact details and call the prospect.</li>
           <li>Record calls, follow-ups, electricity supply and the rooftop solar check.</li>
           <li>
-            When the prospect confirms interest, open the lead and choose Move to CRM pipeline.
+            When the prospect confirms interest, change its status to Interested.
           </li>
-          <li>Select the responsible CRM owner and resolve any matching opportunity.</li>
+          <li>The system routes it automatically; it asks only when an owner or duplicate decision is required.</li>
           <li>The CRM team continues from Lead Received through KYC and proposal stages.</li>
         </ol>
         <Button className="mt-5 rounded-full bolide-gradient" asChild>
